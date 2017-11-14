@@ -1,0 +1,214 @@
+﻿<HTML>
+    <HEAD>
+        <META http-equiv=Content-Language content=zh-cn>
+        <META http-equiv=Content-Type content="text/html; charset=utf-8">
+        <META http-equiv="Pragma" content="no-cache">
+        <META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+	<link href="../css/main.css" rel="stylesheet"/>
+	<script language=javascript src=../js/Common.js type=text/javascript></script>
+    </HEAD>
+    <BODY>
+        <CENTER>
+            <FORM method=GET action=/cgi-bin/response_Main.cgi onsubmit="return onSubmit()">
+		<input type=hidden name=obj_htm id=id_obj_htm value=sip_cfg.htm >
+		<input type=hidden name=obj_x2i id=id_obj_x2i value=sip_cfg.x2i >
+		<input type=hidden name=obj_c2h id=id_obj_c2h value=sip_cfg.c2h >
+		<input type=hidden name=obj_ret id=id_obj_ret value=/cache/SipCfg.htm id=id_obj_ret >
+		<input type=hidden name=obj_sh value=response_SipCfg.sh >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.sip_options ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>	
+
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.be_sip_enable ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=sip_enable value=1 onclick="set_sip_enable(1);" ><div class="l40 radio_text"><?cgi string=str.enable_use ?></div>
+	  <input class=radio type=radio name=sip_enable value=0 onclick="set_sip_enable(0);" ><div class="l40 radio_text"><?cgi string=str.disable_use ?></div>
+	</DIV>
+      </DIV>
+
+      <div id=id_div_sip class=c_none >
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.sip_server_ip ?>:</DIV>
+        <DIV class=class_col2>
+                 <INPUT class="text l100" maxLength=15 id=sip_ip name=sip_ip value=<?cgi sip.ip ?> >&nbsp;:
+                 <INPUT class="text l40" maxLength=5 id=sip_port name=sip_port value=<?cgi sip.port ?> > (<?cgi string=str.default ?>5060)
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+      	<DIV class=class_col1><?cgi string=str.user ?>:</DIV>
+      	<DIV class=class_col2>
+                <INPUT class="text l100" maxLength=20 name=board_1_sip_username value=<?cgi board_1.sip_username ?> >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+      	<DIV class=class_col1><?cgi string=str.key ?>:</DIV>
+      	<DIV class=class_col2>
+                <INPUT class="text l100" maxLength=20 name=board_1_sip_passwd value=<?cgi board_1.sip_passwd ?> >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+      	<DIV class=class_col1><?cgi string=str.net_port ?>:</DIV>
+      	<DIV class=class_col2>
+	        <INPUT class="text l40" maxLength=5 name=board_1_sip_port value=<?cgi board_1.sip_port ?> >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+      	<DIV class=class_col1><?cgi string=str.audio_port ?>:</DIV>
+      	<DIV class=class_col2>
+        	<INPUT class="text l40" maxLength=5 name=board_1_sip_audio_rtp_port value=<?cgi board_1.sip_audio_rtp_port ?> >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+      	<DIV class=class_col1><?cgi string=str.vedio_port ?>:</DIV>
+      	<DIV class=class_col2>
+        	<INPUT class="text l40" maxLength=5 name=board_1_sip_vedio_rtp_port value=<?cgi board_1.sip_vedio_rtp_port ?> >
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+      	<DIV class=class_col1><?cgi string=str.be_sip_mast_enable ?>:</DIV>
+      	<DIV class=class_col2>
+          <input class=radio type=radio name=board_1_call_type value=2 onclick="call_type(2);" ><div class="l40 radio_text"><?cgi string=str.enable_use ?></div>
+	  <input class=radio type=radio name=board_1_call_type value=1 onclick="call_type(1);" ><div class="l40 radio_text"><?cgi string=str.disable_use ?></div>
+	</DIV>
+      </DIV>
+      <div id="id_div_sip_mast" class=c_none >
+      <DIV class=class_row >
+        <DIV class=class_col1><?cgi string=str.phone_target ?>:</DIV>
+        <DIV class=class_col2>
+	    <input type=hidden id=id_hidden_sip_target name=sip_target value="<?cgi sip.target ?>">
+	    <div id=id_div_sip_target style="width:280px; overflow:hidden;"></div>
+	    <div style="width:280px; margin-top:15px; overflow:hidden;">
+		<input class="text l100" type=text id=id_add_text >
+		<input class=button style="margin-left:5px;" type=button value=<?cgi string=str.add ?> id=id_button_add_text >
+	    </div>
+	</DIV>
+      </DIV>
+      </div><!-- id_div_sip_mast -->
+      </div><!-- id_div_sip  -->
+
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value=<?cgi string=str.save ?> type=submit name=b_save>&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+            </FORM>
+        </CENTER>
+        <META http-equiv="Pragma" content="no-cache">
+    </BODY>
+
+<script language="javascript">
+function on_submit(){
+	if(confirm("<?cgi string=str.device_will_reboot ?>")){
+	  return true;
+	}else{
+	  return false;
+	}
+}
+
+/******** here to add & del tel number ********/
+function delSubStr(str,idx){
+	var obj;
+	var ret="";
+	obj=str.split(".");
+	for(i=0;i<obj.length;i++){
+		if(i!=idx){
+			ret+=obj[i];
+			if(obj[i]!=""){
+				ret+=".";
+			}
+		}
+	}
+	if(ret==""){
+		ret=".";
+	}
+	return ret;
+	
+}
+function onDel(idx){
+	$("id_hidden_sip_target").value=delSubStr($("id_hidden_sip_target").value, idx);
+	$("id_div_sip_target").innerHTML=divEncode($("id_hidden_sip_target").value);
+	if($("id_div_sip_target").innerHTML==""){
+		$("id_div_sip_target").className="class_none";
+	}else{
+		$("id_div_sip_target").className="class_block";
+	}
+}
+function onAdd(){
+	if($("id_add_text").value==""){
+		return;
+	}
+	if($("id_hidden_sip_target").value=="."){
+		$("id_hidden_sip_target").value="";
+	}
+	$("id_hidden_sip_target").value+=$("id_add_text").value+".";
+	$("id_div_sip_target").innerHTML=divEncode($("id_hidden_sip_target").value);
+	if($("id_div_sip_target").innerHTML==""){
+		$("id_div_sip_target").className="class_none";
+	}else{
+		$("id_div_sip_target").className="class_block";
+	}
+}
+function divEncode(str){
+	var obj;
+	var ret="";
+	obj=str.split(".");
+	for(i=0;i<obj.length;i++){
+	  if(obj[i]!=""){
+	  	ret+="<div style='width:280px; height:18px; margin-top:10px;'><div class='text l100'  style='float:left;'>"+obj[i]+"</div><input class=button type=button style='margin-left:5px;' value='<?cgi string=str.delete ?>' onclick=onDel("+i+") ></div>";
+	  }
+	}
+	return ret;
+}
+$("id_button_add_text").onclick=function(){
+	onAdd();	
+}
+/*******************/
+function setValue(id,val){
+	$(id).value=val;
+}
+
+function set_sip_enable(type){
+  if(type!=1){
+    $("id_div_sip").className="c_none";
+  }else{
+    $("id_div_sip").className="c_block";
+  }
+}
+
+function call_type(type){
+  if(type!=2){
+    $("id_div_sip_mast").className="c_none";
+  }else{
+    $("id_div_sip_mast").className="c_block";
+  }
+}
+
+
+$("id_div_sip_target").innerHTML=divEncode($("id_hidden_sip_target").value);
+if($("id_div_sip_target").innerHTML==""){
+  $("id_div_sip_target").className="c_none";
+}else{
+  $("id_div_sip_target").className="c_block";
+}
+
+put_radio("sip_enable",<?cgi sip.enable ?>0/10);
+put_radio("board_1_call_type",<?cgi board_1.call_type ?>0/10);
+set_sip_enable(get_radio("sip_enable"));
+call_type(get_radio("board_1_call_type"));
+
+$("id_obj_ret").value+="?time="+(new Date()).getTime();
+$("id_obj_ret").value=urlEncode($("id_obj_ret").value);
+</script>
+</HTML>

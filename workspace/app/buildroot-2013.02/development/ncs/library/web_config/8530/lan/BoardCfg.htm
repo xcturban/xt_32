@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<HTML>
+<HEAD>
+<META http-equiv=Content-Language content=zh-cn>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META http-equiv="Pragma" content="no-cache">
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+<link rel="stylesheet" href="/css/main.css"/>
+<script language=javascript type=text/javascript src="/js/Common.js" ></script>
+</HEAD>
+<BODY onload="bd_load()">
+<iframe style="display:none" name=db onload="db_load()" ></iframe>
+<iframe style="display:none" name=bc onload="bc_load()" ></iframe>
+        <CENTER>
+<DIV class=container_key >
+  <div class=title_Key>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right_Key ><div class=title_left_num><?cgi string=str.expand_set ?>-</div><div class=title_right_num id=title_right_num>1</div></div>
+  </div>
+  <div class=div_main_edgeKey>
+  <DIV class=div_mainKey id=div_main >
+  <!--  *******************************nicholas will write full of here****************************************  -->
+  </div><!-- div_main -->
+
+
+<FORM method=GET action="/cgi-bin/response_x2i.cgi" onsubmit="return on_submit()">
+  <input type=hidden name=obj_x2i id=id_x2i value=board_cfg_1.x2i >
+  <input type=hidden name=obj_ini value=board_cfg.ini >
+  <input type=hidden name=obj_sh value=response_BoardCfg.sh >
+  <input type=hidden name=obj_ret value="/cache/BoardCfg.htm" id=id_obj_ret >
+  
+
+  <div id=data style="display:none;" ></div>
+
+  <DIV class=class_row1Key>
+    <DIV class=class_r1c1>
+      <INPUT class=button value=<?cgi string=str.save ?> type=submit >
+    </DIV>
+  </DIV>
+
+</FORM>
+
+
+  </div><!-- div_main_edge -->
+</DIV>
+</CENTER>
+
+<!-- ************* help page , must add iniHelpButton() in js segment ****************** -->
+<div class="help_container">
+  <div class="help_left"><div class="help_top_space"></div><div class="help_button_0" id="help_button" ></div></div>
+  <div class="help_right_0" id="help_right">
+    <div class="help_head" ><?cgi string=str.help_message ?></div>
+    <iframe name=help class="help_text" frameBorder=0 src="" ></iframe>
+  </div>
+</div>
+<!-- ************* help page end ****************** -->
+
+</BODY>
+
+<script language="javascript">
+board_num=0;
+board_index=1;
+key_index=1;
+var board_json=null;
+
+function bd_load(){
+  window.frames["db"].document.location="/ini/sys_cfg.txt?time="+(new Date()).getTime();
+  var ret = location.toString().substring(location.toString().lastIndexOf("/")+1, location.toString().indexOf(".htm")+4);
+  window.frames["help"].document.location="/cache/Help"+ret+"?time="+(new Date()).getTime();
+  iniHelpButton();
+}
+
+function db_load(){
+  var str=window.frames["db"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var db=ini2json(str);
+
+  board_num = db.board_cfg.board_count;
+  create_display(board_num);
+  window.frames["bc"].document.location="/ini/board_cfg.txt?time="+(new Date()).getTime();
+  
+}
+
+function bc_load(){
+  var str=window.frames["bc"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var bc=ini2json(str);
+  board_json = bc;
+
+  board_index=parseInt(getQueryString("board_index"));
+  board_index=board_index?board_index:1;
+  set_radio_by_json(board_index);
+  onclick_board_index(board_index);
+  create_data(board_index);
+}
+
+function on_submit(){
+  create_data(board_index);
+
+  $("id_x2i").value="board_cfg_"+board_index+".x2i";
+  $("id_obj_ret").value=$("id_obj_ret").value+"?board_index="+board_index;
+  $("id_obj_ret").value=urlEncode($("id_obj_ret").value);
+  return true;
+}
+
+function create_display(board_num){
+  var i;
+  var str;
+  str="";
+  str+='<DIV class=class_rowKey><DIV class=class_col1_key>&nbsp;&nbsp;&nbsp;&nbsp;<?cgi string=str.hot_key ?></DIV><DIV class=class_col2_key>&nbsp;&nbsp;&nbsp;ID</DIV><DIV class=class_col2_key>&nbsp;&nbsp;&nbsp;<?cgi string=str.pickup_num ?></DIV><DIV class=class_col4_key>&nbsp;&nbsp;&nbsp;<?cgi string=str.name ?></DIV><DIV class="class_col3_key">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?cgi string=str.function ?></DIV></DIV>';
+  for(i=0; i<16; i++){
+    str+='<DIV class=class_row_key><DIV class=class_col1_key>&nbsp;&nbsp;&nbsp;&nbsp;F';
+    str+=i+1;
+    str+=':</DIV><DIV class=class_col2_key><INPUT type=text onchange="set_json(board_index, '+i+')" onclick="key_index='+i+'" class="left text l50" maxLength=5 id=name';
+    str+=i;
+    str+=' value=';
+    str+=i;
+	str+=' ></DIV><DIV class=class_col2_key><INPUT type=text onchange="set_json(board_index, '+i+')" onclick="key_index='+i+'" class="left text l50" id=pickup_num';
+    str+=i;
+    str+=' value=';
+    str+=' ></DIV><DIV class=class_col4_key><INPUT type=text onchange="set_json(board_index, '+i+')" onclick="key_index='+i+'"  class="left text l40"  id=expand_name';
+    str+=i;
+    str+=' value=';
+    str+=' ></DIV><DIV class=class_col3_key><input onclick="set_json(board_index, '+i+')" class=radio type=radio name=fun';
+    str+=i;
+    str+=' value=0 ><div class="l30 radio_text"><?cgi string=str.talk ?></div><input onclick="set_json(board_index, '+i+')" class=radio type=radio name=fun';
+    str+=i;
+    str+=' value=1 ><div class="l30 radio_text"><?cgi string=str.broadcast ?></div><input onclick="set_json(board_index, '+i+')" class=radio type=radio name=fun';
+    str+=i;
+    str+=' value=3 ><div class="l40 radio_text"><?cgi string=str.area_broadcast ?></div><input onclick="set_json(board_index, '+i+')" class=radio type=radio name=fun';
+    str+=i;
+    str+=' value=2 ><div class="l30 radio_text">SIP</div></DIV></DIV>';
+  }
+  str+='<DIV class=class_row>';
+  for(i=1; i<=board_num; i++){
+    
+    str+='<div class=board_index id=board_index_'+i+' onclick="onclick_board_index('+i+');set_radio_by_json('+i+');" >'+i+'</div>';
+  }
+  str+='</DIV>';
+  $('div_main').innerHTML=str; 
+}
+
+function create_data(board_idx){
+  var i;
+  var str;
+  str="";
+  var len=16;
+  var key_name_head="board_json.board_"+board_idx+".key_";
+  for(i=0; i<len; i++){
+    key_name=key_name_head+i;
+    str+="<input type=hidden name=board_"+board_idx+"_key_"+i+" value="+eval(key_name)+" >";
+  }
+  $("data").innerHTML=str;
+}
+
+function set_radio_by_json(board_idx){
+  var i;
+  var str;
+  var len=16;
+  var key_name_head="board_json.board_"+board_idx+".key_";
+  for(i=0; i<len; i++){
+    key_name=key_name_head+i;
+    str=eval(key_name);
+    str=str.split("_");
+    if(str.length<4){
+      jslog("set_radio_by_json: str.length<4");
+    }
+    id=str[0];
+    fun=str[1];
+    eval("name"+i).value=id;
+	eval("pickup_num"+i).value=str[2];
+	eval("expand_name"+i).value=decodeURIComponent(str[3]);
+    put_radio("fun"+i, fun);
+  }
+}
+
+function set_json(board_idx, key){
+  var i;
+  var str;
+  var len=16;
+  var val="";
+  var key_name_head="board_json.board_"+board_idx+".key_";
+  val=""+eval("name"+key).value+"_"+get_radio("fun"+key)+"_"+eval("pickup_num"+key).value+"_"+eval("expand_name"+key).value;
+  str=key_name_head+key+'="'+val+'"';
+  eval(str);
+}
+
+function onclick_board_index(board_idx){
+  var i;
+  /* set page_select css */
+  for(i=1; i<=board_num; i++){
+    str="board_index_"+i;
+    $(str).className="board_index";
+  }
+  str="board_index_"+board_idx;
+  $(str).className="board_index_selected";
+
+  board_index=board_idx;
+  $('title_right_num').innerHTML=board_index;
+}
+
+function getQueryString(name){
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+  var r = location.search.substr(1).match(reg);
+  if(r != null){
+    return unescape(r[2]); return null;
+  }
+}
+</script>
+</HTML>

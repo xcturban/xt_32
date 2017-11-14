@@ -1,0 +1,11 @@
+[version_info]
+verInfo=标准
+devName=NAS8523V	
+verMajor=1
+verMinor=7
+verInner=0
+verRev=0
+verBuild=0
+verYear=2014
+verMonth=5
+verDay=11

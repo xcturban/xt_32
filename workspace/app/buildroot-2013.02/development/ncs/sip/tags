@@ -1,0 +1,135 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Buf	./sip.c	/^	char Buf[133];$/;"	kind:local	line:127	language:C
+CALL_ANSWER	./sip.c	/^	CALL_ANSWER,$/;"	kind:enumerator	line:54	language:C	enum:__anon3	file:
+CALL_BUSY	./sip.c	/^	CALL_BUSY,$/;"	kind:enumerator	line:53	language:C	enum:__anon3	file:
+CALL_IN	./sip.c	/^	CALL_IN,$/;"	kind:enumerator	line:51	language:C	enum:__anon3	file:
+CALL_REQUEST	./sip.c	/^	CALL_REQUEST = 0,$/;"	kind:enumerator	line:50	language:C	enum:__anon3	file:
+CALL_START	./sip.c	/^	CALL_START,$/;"	kind:enumerator	line:52	language:C	enum:__anon3	file:
+CALL_STOP	./sip.c	/^	CALL_STOP,$/;"	kind:enumerator	line:55	language:C	enum:__anon3	file:
+LINPHONEC_CTRL_PIPE	./sip.c	65;"	kind:macro	line:65	language:C	file:
+REGISTERED	./sip.c	/^	REGISTERED,$/;"	kind:enumerator	line:61	language:C	enum:__anon4	file:
+SIP_BLF_STATE_GET	./sip.c	/^	SIP_BLF_STATE_GET,$/;"	kind:enumerator	line:44	language:C	enum:__anon2	file:
+SIP_BLF_STATE_SET	./sip.c	/^	SIP_BLF_STATE_SET,$/;"	kind:enumerator	line:43	language:C	enum:__anon2	file:
+SIP_BLF_STATE_UPDATE	./sip.c	/^	SIP_BLF_STATE_UPDATE,$/;"	kind:enumerator	line:45	language:C	enum:__anon2	file:
+SIP_CALL	./sip.c	/^	SIP_CALL = 0,$/;"	kind:enumerator	line:37	language:C	enum:__anon2	file:
+SIP_CAMERA_OFF	./sip.c	/^	SIP_CAMERA_OFF,$/;"	kind:enumerator	line:39	language:C	enum:__anon2	file:
+SIP_CAMERA_ON	./sip.c	/^	SIP_CAMERA_ON,$/;"	kind:enumerator	line:38	language:C	enum:__anon2	file:
+SIP_DISPLAY_VIDEO	./sip.c	/^	SIP_DISPLAY_VIDEO,$/;"	kind:enumerator	line:42	language:C	enum:__anon2	file:
+SIP_DTMF	./sip.c	/^	SIP_DTMF,$/;"	kind:enumerator	line:41	language:C	enum:__anon2	file:
+SIP_REGISTER_STATE	./sip.c	/^	SIP_REGISTER_STATE,$/;"	kind:enumerator	line:40	language:C	enum:__anon2	file:
+UNREGISTERED	./sip.c	/^	UNREGISTERED = 0,$/;"	kind:enumerator	line:60	language:C	enum:__anon4	file:
+__SIP_H__	./sip.h	2;"	kind:macro	line:2	language:C++
+__anon1::cmd	./sip.c	/^	uint8_t cmd;$/;"	kind:member	line:27	language:C	struct:__anon1	file:	access:public
+__anon1::data	./sip.c	/^	uint8_t data[128];$/;"	kind:member	line:32	language:C	struct:__anon1	file:	access:public
+__anon1::param1	./sip.c	/^	uint8_t param1;$/;"	kind:member	line:28	language:C	struct:__anon1	file:	access:public
+__anon1::param2	./sip.c	/^	uint8_t param2;$/;"	kind:member	line:29	language:C	struct:__anon1	file:	access:public
+__anon1::param3	./sip.c	/^	uint8_t param3;$/;"	kind:member	line:30	language:C	struct:__anon1	file:	access:public
+__anon1::param4	./sip.c	/^	uint8_t param4;$/;"	kind:member	line:31	language:C	struct:__anon1	file:	access:public
+__evt_data	./sip.c	/^	sip_event_data_t __evt_data;$/;"	kind:local	line:93	language:C
+audio_manager	./sip.c	/^	struct audio_manager *audio_manager = term->audio_manager;$/;"	kind:local	line:125	language:C
+audio_manager	./sip.c	/^	struct audio_manager *audio_manager = term->audio_manager;$/;"	kind:local	line:426	language:C
+blf_state_update	./sip.h	/^	int (*blf_state_update)(void);$/;"	kind:member	line:20	language:C++	struct:sip_manager	access:public
+busy	./sip.c	/^	bool_t busy;$/;"	kind:member	line:71	language:C	struct:sip_internal_data	file:	access:public
+busy	./sip.h	/^	bool_t (*busy)(void);$/;"	kind:member	line:12	language:C++	struct:sip_manager	access:public
+call_param_t	./sip.c	/^} call_param_t;$/;"	kind:typedef	line:56	language:C	typeref:enum:__anon3	file:
+call_request	./sip.h	/^	int (*call_request)(uint8_t *data, uint8_t data_len);$/;"	kind:member	line:17	language:C++	struct:sip_manager	access:public
+call_start	./sip.h	/^	int (*call_start)(void);$/;"	kind:member	line:19	language:C++	struct:sip_manager	access:public
+call_stop	./sip.h	/^	int (*call_stop)(void);$/;"	kind:member	line:18	language:C++	struct:sip_manager	access:public
+client_pipe	./sip.c	/^	ortp_pipe_t client_pipe;$/;"	kind:member	line:74	language:C	struct:sip_internal_data	file:	access:public
+cmd	./sip.c	/^	uint8_t cmd;$/;"	kind:member	line:27	language:C	struct:__anon1	file:	access:public
+data	./sip.c	/^	uint8_t data[128];$/;"	kind:member	line:32	language:C	struct:__anon1	file:	access:public
+evt_data	./sip.c	/^					sip_event_data_t evt_data;$/;"	kind:local	line:286	language:C
+evt_get_id	./sip.c	/^	pthread_t evt_get_id;$/;"	kind:member	line:76	language:C	struct:sip_internal_data	file:	access:public
+evt_get_mutex	./sip.c	/^	pthread_mutex_t evt_get_mutex;$/;"	kind:member	line:77	language:C	struct:sip_internal_data	file:	access:public
+get_target_name	./sip.h	/^	char *(*get_target_name)(void);$/;"	kind:member	line:14	language:C++	struct:sip_manager	access:public
+get_target_number	./sip.h	/^	char *(*get_target_number)(void);$/;"	kind:member	line:15	language:C++	struct:sip_manager	access:public
+i	./sip.c	/^	int i;$/;"	kind:local	line:234	language:C
+ini_config	./sip.c	/^	LpConfig *ini_config, *linphone_config;$/;"	kind:local	line:343	language:C
+ip	./sip.c	/^	char *ip;$/;"	kind:local	line:346	language:C
+linphone_cfg_file_update	./sip.c	/^static int linphone_cfg_file_update(void)$/;"	kind:function	line:341	language:C	file:	signature:(void)
+linphone_config	./sip.c	/^	LpConfig *ini_config, *linphone_config;$/;"	kind:local	line:343	language:C
+linphone_start	./sip.c	/^static int linphone_start(void)$/;"	kind:function	line:316	language:C	file:	signature:(void)
+max_fd	./sip.c	/^		int max_fd;$/;"	kind:local	line:261	language:C
+max_fd	./sip.c	/^	int max_fd = 0;$/;"	kind:local	line:236	language:C
+name	./sip.c	/^	char *name, *passwd;$/;"	kind:local	line:344	language:C
+ncs_manager	./sip.c	/^	struct ncs_manager *ncs_manager = term->ncs_manager;$/;"	kind:local	line:126	language:C
+ncs_monitor_stop	./sip.c	/^					ncs_manager->ncs_monitor_stop(ncs_manager);$/;"	kind:prototype	line:139	language:C	file:
+p	./sip.c	/^	char *p = NULL;$/;"	kind:local	line:348	language:C
+param1	./sip.c	/^	uint8_t param1;$/;"	kind:member	line:28	language:C	struct:__anon1	file:	access:public
+param2	./sip.c	/^	uint8_t param2;$/;"	kind:member	line:29	language:C	struct:__anon1	file:	access:public
+param3	./sip.c	/^	uint8_t param3;$/;"	kind:member	line:30	language:C	struct:__anon1	file:	access:public
+param4	./sip.c	/^	uint8_t param4;$/;"	kind:member	line:31	language:C	struct:__anon1	file:	access:public
+passwd	./sip.c	/^	char *name, *passwd;$/;"	kind:local	line:344	language:C
+pipe	./sip.c	/^		ortp_pipe_t pipe;$/;"	kind:local	line:262	language:C
+pipe	./sip.c	/^	ortp_pipe_t pipe;$/;"	kind:local	line:235	language:C
+port	./sip.c	/^	int port;$/;"	kind:local	line:347	language:C
+realm_len	./sip.c	/^		int realm_len = strlen(name) - (p - name) - 1;$/;"	kind:local	line:383	language:C
+register_param_t	./sip.c	/^} register_param_t;$/;"	kind:typedef	line:62	language:C	typeref:enum:__anon4	file:
+registered	./sip.c	/^	bool_t registered;$/;"	kind:member	line:70	language:C	struct:sip_internal_data	file:	access:public
+registered	./sip.h	/^	bool_t (*registered)(void);$/;"	kind:member	line:11	language:C++	struct:sip_manager	access:public
+ret	./sip.c	/^		int ret;$/;"	kind:local	line:260	language:C
+ret	./sip.c	/^	int ret;$/;"	kind:local	line:479	language:C
+ret	./sip.c	/^	int ret;$/;"	kind:local	line:92	language:C
+rset	./sip.c	/^		fd_set rset;$/;"	kind:local	line:259	language:C
+send_dtmf	./sip.h	/^	int (*send_dtmf)(char c);$/;"	kind:member	line:13	language:C++	struct:sip_manager	access:public
+server_pipe	./sip.c	/^	ortp_pipe_t server_pipe;$/;"	kind:member	line:73	language:C	struct:sip_internal_data	file:	access:public
+sid	./sip.c	/^static struct sip_internal_data *sid;$/;"	kind:variable	line:83	language:C	typeref:struct:sip_internal_data	file:
+sip.c	./sip.c	1;"	kind:file	line:1	language:C
+sip.h	./sip.h	1;"	kind:file	line:1	language:C++
+sip_blf_state_update	./sip.c	/^static int sip_blf_state_update(void)$/;"	kind:function	line:497	language:C	file:	signature:(void)
+sip_busy	./sip.c	/^bool_t sip_busy(void)$/;"	kind:function	line:467	language:C	signature:(void)
+sip_call	./sip.c	/^static int sip_call(call_param_t param1, uint8_t *data, uint8_t data_len)$/;"	kind:function	line:116	language:C	file:	signature:(call_param_t param1, uint8_t *data, uint8_t data_len)
+sip_call_request	./sip.c	/^static int sip_call_request(uint8_t *data, uint8_t data_len)$/;"	kind:function	line:424	language:C	file:	signature:(uint8_t *data, uint8_t data_len)
+sip_call_start	./sip.c	/^static int sip_call_start(void)$/;"	kind:function	line:442	language:C	file:	signature:(void)
+sip_call_stop	./sip.c	/^static int sip_call_stop(void)$/;"	kind:function	line:436	language:C	file:	signature:(void)
+sip_ctrl_event_recv	./sip.c	/^static void sip_ctrl_event_recv(sip_event_data_t *__evt_data)$/;"	kind:function	line:122	language:C	file:	signature:(sip_event_data_t *__evt_data)
+sip_event_data_t	./sip.c	/^} __attribute__ ((packed)) sip_event_data_t;$/;"	kind:typedef	line:33	language:C	typeref:struct:__anon1	file:
+sip_event_get_thread	./sip.c	/^static void *sip_event_get_thread(void *arg)$/;"	kind:function	line:255	language:C	file:	signature:(void *arg)
+sip_event_send	./sip.c	/^static int sip_event_send(uint8_t cmd,$/;"	kind:function	line:87	language:C	file:	signature:(uint8_t cmd, uint8_t param1, uint8_t param2, uint8_t param3, uint8_t param4, uint8_t *data, uint8_t data_len)
+sip_fd_set	./sip.c	/^static int sip_fd_set(fd_set *rset)$/;"	kind:function	line:232	language:C	file:	signature:(fd_set *rset)
+sip_internal_data	./sip.c	/^struct sip_internal_data$/;"	kind:struct	line:68	language:C	file:
+sip_internal_data::busy	./sip.c	/^	bool_t busy;$/;"	kind:member	line:71	language:C	struct:sip_internal_data	file:	access:public
+sip_internal_data::client_pipe	./sip.c	/^	ortp_pipe_t client_pipe;$/;"	kind:member	line:74	language:C	struct:sip_internal_data	file:	access:public
+sip_internal_data::evt_get_id	./sip.c	/^	pthread_t evt_get_id;$/;"	kind:member	line:76	language:C	struct:sip_internal_data	file:	access:public
+sip_internal_data::evt_get_mutex	./sip.c	/^	pthread_mutex_t evt_get_mutex;$/;"	kind:member	line:77	language:C	struct:sip_internal_data	file:	access:public
+sip_internal_data::registered	./sip.c	/^	bool_t registered;$/;"	kind:member	line:70	language:C	struct:sip_internal_data	file:	access:public
+sip_internal_data::server_pipe	./sip.c	/^	ortp_pipe_t server_pipe;$/;"	kind:member	line:73	language:C	struct:sip_internal_data	file:	access:public
+sip_internal_data::target_Number	./sip.c	/^	char target_Number[128];$/;"	kind:member	line:80	language:C	struct:sip_internal_data	file:	access:public
+sip_internal_data::target_name	./sip.c	/^	char target_name[128];$/;"	kind:member	line:79	language:C	struct:sip_internal_data	file:	access:public
+sip_manager	./sip.c	/^	struct sip_manager *sip_manager = malloc(sizeof(struct sip_manager));$/;"	kind:local	line:504	language:C
+sip_manager	./sip.h	/^struct sip_manager {$/;"	kind:struct	line:7	language:C++
+sip_manager::blf_state_update	./sip.h	/^	int (*blf_state_update)(void);$/;"	kind:member	line:20	language:C++	struct:sip_manager	access:public
+sip_manager::busy	./sip.h	/^	bool_t (*busy)(void);$/;"	kind:member	line:12	language:C++	struct:sip_manager	access:public
+sip_manager::call_request	./sip.h	/^	int (*call_request)(uint8_t *data, uint8_t data_len);$/;"	kind:member	line:17	language:C++	struct:sip_manager	access:public
+sip_manager::call_start	./sip.h	/^	int (*call_start)(void);$/;"	kind:member	line:19	language:C++	struct:sip_manager	access:public
+sip_manager::call_stop	./sip.h	/^	int (*call_stop)(void);$/;"	kind:member	line:18	language:C++	struct:sip_manager	access:public
+sip_manager::get_target_name	./sip.h	/^	char *(*get_target_name)(void);$/;"	kind:member	line:14	language:C++	struct:sip_manager	access:public
+sip_manager::get_target_number	./sip.h	/^	char *(*get_target_number)(void);$/;"	kind:member	line:15	language:C++	struct:sip_manager	access:public
+sip_manager::registered	./sip.h	/^	bool_t (*registered)(void);$/;"	kind:member	line:11	language:C++	struct:sip_manager	access:public
+sip_manager::send_dtmf	./sip.h	/^	int (*send_dtmf)(char c);$/;"	kind:member	line:13	language:C++	struct:sip_manager	access:public
+sip_manager::sip_sdk_tool_sockaddr	./sip.h	/^	struct sockaddr sip_sdk_tool_sockaddr; \/\/ sip·şÎñÆ÷ºÆÔÆSDK¹¤¾ßÍøÂçµØÖ·$/;"	kind:member	line:8	language:C++	struct:sip_manager	typeref:struct:sip_manager::sockaddr	access:public
+sip_manager::start	./sip.h	/^	int (*start)(void);$/;"	kind:member	line:9	language:C++	struct:sip_manager	access:public
+sip_manager::stop	./sip.h	/^	int (*stop)(void);$/;"	kind:member	line:10	language:C++	struct:sip_manager	access:public
+sip_manager_free	./sip.c	/^void sip_manager_free(struct sip_manager *sip_manager)$/;"	kind:function	line:526	language:C	signature:(struct sip_manager *sip_manager)
+sip_manager_free	./sip.h	/^void sip_manager_free(struct sip_manager *sip_manager);$/;"	kind:prototype	line:24	language:C++	signature:(struct sip_manager *sip_manager)
+sip_manager_malloc	./sip.c	/^struct sip_manager *sip_manager_malloc(void)$/;"	kind:function	line:502	language:C	signature:(void)
+sip_manager_malloc	./sip.h	/^struct sip_manager *sip_manager_malloc(void);$/;"	kind:prototype	line:23	language:C++	signature:(void)
+sip_msg_t	./sip.c	/^} sip_msg_t;$/;"	kind:typedef	line:46	language:C	typeref:enum:__anon2	file:
+sip_registered	./sip.c	/^static bool_t sip_registered(void)$/;"	kind:function	line:447	language:C	file:	signature:(void)
+sip_sdk_tool_sockaddr	./sip.h	/^	struct sockaddr sip_sdk_tool_sockaddr; \/\/ sip·şÎñÆ÷ºÆÔÆSDK¹¤¾ßÍøÂçµØÖ·$/;"	kind:member	line:8	language:C++	struct:sip_manager	typeref:struct:sip_manager::sockaddr	access:public
+sip_send_dtmf	./sip.c	/^static int sip_send_dtmf(char c)$/;"	kind:function	line:462	language:C	file:	signature:(char c)
+sip_start	./sip.c	/^static int sip_start(void)$/;"	kind:function	line:477	language:C	file:	signature:(void)
+sip_stop	./sip.c	/^static int sip_stop(void)$/;"	kind:function	line:472	language:C	file:	signature:(void)
+sip_target_name_get	./sip.c	/^static char *sip_target_name_get(void)$/;"	kind:function	line:452	language:C	file:	signature:(void)
+sip_target_number_get	./sip.c	/^static char *sip_target_number_get(void)$/;"	kind:function	line:457	language:C	file:	signature:(void)
+start	./sip.h	/^	int (*start)(void);$/;"	kind:member	line:9	language:C++	struct:sip_manager	access:public
+stop	./sip.h	/^	int (*stop)(void);$/;"	kind:member	line:10	language:C++	struct:sip_manager	access:public
+target_Number	./sip.c	/^	char target_Number[128];$/;"	kind:member	line:80	language:C	struct:sip_internal_data	file:	access:public
+target_name	./sip.c	/^	char target_name[128];$/;"	kind:member	line:79	language:C	struct:sip_internal_data	file:	access:public
+task	./sip.c	/^	task_t task = get_system_task(); \/\/ ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½$/;"	kind:local	line:124	language:C
+tmp	./sip.c	/^	char tmp[128] = {0};$/;"	kind:local	line:345	language:C

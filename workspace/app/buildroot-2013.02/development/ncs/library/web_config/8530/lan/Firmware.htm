@@ -1,0 +1,156 @@
+﻿<HTML>
+    <HEAD>
+        <META http-equiv=Content-Language content=zh-cn>
+        <META http-equiv=Content-Type content="text/html; charset=utf-8">
+        <META http-equiv="Pragma" content="no-cache">
+        <META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+        <LINK rel=stylesheet href=CSS4Main.htm>
+	<link href="/css/main.css" rel="stylesheet"/>
+        <script language=javascript src="/js/Common.js" ></script>
+<style>
+#id_iframe_scroller{display:none; }
+#id_scroller_outline{width:200px; height:15px; background-color:white; border:2px solid blue; display:none; }
+#id_scroller_inline{width:20px; height:13px; background-color:gray;}
+#id_show_message{width:100px; height:20px; float:left;}
+.class_list{width:500px; }
+
+</style>
+    </HEAD>
+<BODY onresize="Resize(this);" onload="bd_load()">
+<iframe style="display:none" name=db onload="db_load()" ></iframe>
+<iframe style="display:none" name=dv onload="dv_load()" ></iframe>
+        <CENTER>
+	    <iframe id=id_iframe_scroller name=name_iframe_scroller src=HardUpdateState.cgi ></iframe>
+            <FORM enctype=multipart/form-data method=POST action=/cgi-bin/response_UploadFile.cgi target=name_iframe_scroller >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.update_firmware ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+      <DIV class=class_row style="text-align:left;">
+        <?cgi string=str.you_can_update_your_device ?>。<?cgi string=str.make_sure_you_power_and_net ?>。
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.firmware_version ?>: </DIV>
+        <DIV class=class_col2 id=id_version>
+
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.web_version ?>: </DIV>
+        <DIV class=class_col2 id=web_version>
+
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.path ?>: </DIV>
+        <DIV class=class_col2>
+	  <div style="width:200px; height:24px;">
+		<input class="text" type=file name=HardUpdate id=file_text style="width:200px; height:22px;"/>
+		<!--
+	        <input type=button value=<?cgi string=str.browser ?> class=button style="float:right; width:62px;" >
+			<input type=text id=file_text style="width:125px; height:18px; float:right; margin-right:10px;" >
+		-->
+	  </div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="text-align:left;">
+        <INPUT class=button value="<?cgi string=str.begin_update ?>" type=submit>&nbsp; 
+        <div id=id_show_message style="float:left;"> </div>
+      </DIV>
+      <DIV class=class_row style="text-align:left;">
+	<?cgi string=str.note ?>：<br>
+	1、<?cgi string=str.dont_poweroff_while_update ?>，<?cgi string=str.or_else_make_device_error ?>。<br>
+        2、<?cgi string=str.update_tasts_about_5_minutes ?>，<?cgi string=str.after_that_device_will_reboot ?>。 
+      </DIV>
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+	<div id=id_dialog >
+		<center>
+			<div id=id_upload_state >	
+			</div>
+		</center>
+	</div>
+
+</FORM>
+    </BODY>
+<script>
+function bd_load(){
+  window.frames["db"].document.location="/ini/WebInfo.txt?time="+(new Date()).getTime();
+  window.frames["dv"].document.location="/ini/VersionInfo.txt?time="+(new Date()).getTime();
+}
+
+function db_load(){
+  var str=window.frames["db"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var db=ini2json(str);
+
+  var f_verInfo=db.version_info.verInfo;
+  var f_devName=db.version_info.devName;	
+  var f_verMajor=db.version_info.verMajor;
+  var f_verMinor=db.version_info.verMinor;
+  var f_verInner=db.version_info.verInner;
+  var f_verRev=db.version_info.verRev;
+  var f_verBuild=db.version_info.verBuild;
+  var f_verYear=db.version_info.verYear;
+  var f_verMonth=db.version_info.verMonth;
+  var f_verDay=db.version_info.verDay;
+
+  var version = f_verMajor+'.'+f_verMinor+'.'+f_verInner+'_'+f_verYear+left0(f_verMonth)+left0(f_verDay)+' Build '+f_verBuild;
+  $("web_version").innerHTML=version;
+}
+
+function dv_load(){
+  var str=window.frames["dv"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var dv=ini2json(str);
+
+  var f_verInfo=dv.version_info.verInfo;
+  var f_devName=dv.version_info.devName;	
+  var f_verMajor=dv.version_info.verMajor;
+  var f_verMinor=dv.version_info.verMinor;
+  var f_verInner=dv.version_info.verInner;
+  var f_verRev=dv.version_info.verRev;
+  var f_verBuild=dv.version_info.verBuild;
+  var f_verYear=dv.version_info.verYear;
+  var f_verMonth=dv.version_info.verMonth;
+  var f_verDay=dv.version_info.verDay;
+
+  var version = f_verMajor+'.'+f_verMinor+'.'+f_verInner+'_'+f_verYear+left0(f_verMonth)+left0(f_verDay)+' Build '+f_verBuild;
+  $("id_version").innerHTML=version;
+}
+function left0(a){
+  ret=a.toString();
+  if(ret.length<2){
+    ret='0'+ret;
+  }
+  return ret;
+}
+
+function on_file_change(obj){
+  $("file_text").value=obj.value;
+}
+
+function on_shell(sh_file){
+        var url='/cgi-bin/response_x2i.cgi?obj_x2i=none.x2i&obj_sh='+sh_file;
+        var url_ret='&obj_ret='+urlEncode('/Reboot.htm');
+        url+=url_ret;
+        url+="&time="+(new Date()).getTime();
+        document.getElementById("id_iframe_reboot").src=url;
+}
+</script>
+</HTML>
+

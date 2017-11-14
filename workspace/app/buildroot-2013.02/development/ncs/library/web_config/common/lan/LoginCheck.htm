@@ -1,0 +1,29 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv=Content-Language content=zh-cn>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META http-equiv="Pragma" content="no-cache">
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+</HEAD>
+<BODY >
+</BODY>
+
+<script language="javascript">
+function getQueryString(name){
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+  var r = location.search.substr(1).match(reg);
+  if(r != null){
+    return unescape(r[2]); return null;
+  }
+}
+
+var jmp=getQueryString("jmp");
+if(jmp=="true"){
+  alert("<?cgi string=str.login_successful ?>");
+  location="/cache/Login.htm";
+}else{
+  alert("<?cgi string=str.login_failed ?>");
+  location="/index.htm";
+}
+</script>
+</HTML>

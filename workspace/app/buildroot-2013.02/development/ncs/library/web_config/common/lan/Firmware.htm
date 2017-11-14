@@ -1,0 +1,140 @@
+﻿<HTML>
+    <HEAD>
+        <META http-equiv=Content-Language content=zh-cn>
+        <META http-equiv=Content-Type content="text/html; charset=utf-8">
+        <META http-equiv="Pragma" content="no-cache">
+        <META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+        <LINK rel=stylesheet href=CSS4Main.htm>
+	<link href="/css/main.css" rel="stylesheet"/>
+	<script language=javascript src="/js/Common.js" ></script>
+    </HEAD>
+
+<BODY onresize="Resize(this);" onload="bd_load()">
+<iframe style="display:none" name=db onload="db_load()" ></iframe>
+<iframe style="display:none" name=dv onload="dv_load()" ></iframe>
+        <CENTER>
+	    <iframe id=id_iframe_reboot name=name_iframe_reboot src="" style="display:none;" ></iframe>
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.update_firmware ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+      <DIV class=class_row style="text-align:left;">
+        <?cgi string=str.you_can_update_your_device ?>。<?cgi string=str.make_sure_you_power_and_net ?>。
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.firmware_version ?>: </DIV>
+        <DIV class=class_col2 id=id_version>
+
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row id="seconds_div" style="display:none;">
+        <DIV class=class_col1></DIV>
+        <DIV class=class_col2 id="seconds" style="color:red; font-size:24px;">
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row style="text-align:left;">
+        <INPUT class=button value="<?cgi string=str.update_firmware ?>" type=button onclick="on_submit();" >&nbsp; 
+      </DIV>
+      <DIV class=class_row style="text-align:left;">
+	<?cgi string=str.click_enter_recovery_mode ?>
+      </DIV>
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+
+    </BODY>
+<script>
+var seconds=20;
+
+function bd_load(){
+  window.frames["db"].document.location="/ini/WebInfo.txt?time="+(new Date()).getTime();
+  window.frames["dv"].document.location="/ini/VersionInfo.txt?time="+(new Date()).getTime();
+}
+
+function db_load(){
+  var str=window.frames["db"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var db=ini2json(str);
+
+  var f_verInfo=db.version_info.verInfo;
+  var f_devName=db.version_info.devName;	
+  var f_verMajor=db.version_info.verMajor;
+  var f_verMinor=db.version_info.verMinor;
+  var f_verInner=db.version_info.verInner;
+  var f_verRev=db.version_info.verRev;
+  var f_verBuild=db.version_info.verBuild;
+  var f_verYear=db.version_info.verYear;
+  var f_verMonth=db.version_info.verMonth;
+  var f_verDay=db.version_info.verDay;
+
+  var version = f_verMajor+'.'+f_verMinor+'.'+f_verInner+'_'+f_verYear+left0(f_verMonth)+left0(f_verDay)+' Build '+f_verBuild;
+  $("web_version").innerHTML=version;
+}
+function dv_load(){
+  var str=window.frames["dv"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var dv=ini2json(str);
+
+  var f_verInfo=dv.version_info.verInfo;
+  var f_devName=dv.version_info.devName;	
+  var f_verMajor=dv.version_info.verMajor;
+  var f_verMinor=dv.version_info.verMinor;
+  var f_verInner=dv.version_info.verInner;
+  var f_verRev=dv.version_info.verRev;
+  var f_verBuild=dv.version_info.verBuild;
+  var f_verYear=dv.version_info.verYear;
+  var f_verMonth=dv.version_info.verMonth;
+  var f_verDay=dv.version_info.verDay;
+
+  var version = f_verMajor+'.'+f_verMinor+'.'+f_verInner+'_'+f_verYear+left0(f_verMonth)+left0(f_verDay)+' Build '+f_verBuild;
+  $("id_version").innerHTML=version;
+}
+
+function left0(a){
+  ret=a.toString();
+  if(ret.length<2){
+    ret='0'+ret;
+  }
+  return ret;
+}
+
+function on_shell(sh_file){
+        var url='/cgi-bin/response_x2i.cgi?obj_x2i=none.x2i&obj_sh='+sh_file;
+        var url_ret='&obj_ret='+urlEncode('/Reboot.htm');
+        url+=url_ret;
+        url+="&time="+(new Date()).getTime();
+        document.getElementById("id_iframe_reboot").src=url;
+}
+
+function on_submit(){
+  on_shell('response_Firmware.sh');
+  $("seconds_div").style.display="";
+  setInterval("reload_index()", 1000);  
+  return false;
+}
+
+function reload_index(){
+  $("seconds").innerHTML='<div style="margin-left:75px; ">'+seconds+'</div>';
+  if(seconds--<=0){
+    parent.location="/index.htm";
+  }
+}
+</script>
+</HTML>
+
+

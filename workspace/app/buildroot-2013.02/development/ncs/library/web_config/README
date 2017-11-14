@@ -1,0 +1,44 @@
+/*********************************************************************************************/
+you must read this segment
+author:nicholas
+date: 2013.09.29
+/*****************************/
+1.this directory for installing the web_config web site
+2.you 'd better read the ../package/web_config/web_config.mk
+3. the directory www will cp to target/var/www for root directory of the net web site
+4. config the top .config, you will see BR2_PACKAGE_WEB_CONFIG=y
+5. the data is stored in xml or ini documents, interface data in ini, others (like web_cfg) in xml
+6. stream of visit: 
+     cgi   ->     c2i     ->     ini    ->      c2h     ->      cache      
+     cgi   ->     c2h     ->     xml
+
+
+
+
+
+/*********************************************************************************************/
+
+
+/*********************************************************************************************/
+you must read this segment
+author:nicholas
+date: 2013.10.16
+/*****************************/
+1.this directory must put in ~/Common
+so you have a directory like ~/Common/web_config
+
+2.you 'd better read the ../package/web_config/web_config.mk ,edit it like below:
+WEB_CONFIG_SITE_METHOD = local
+WEB_CONFIG_SITE = ~/Common/web_config
+define WEB_CONFIG_BUILD_CMDS
+        $(@D)/prebuild.sh 8523 $(@D)
+        $(MAKE1) CC=$(TARGET_CC) L=$(TARGET_DIR)/usr/lib l=$(TARGET_DIR)/usr/include -C $(@D) all
+endef
+
+3.all ini files must add .txt;
+sys_cfg.txt
+VersionInfo.txt
+WebInfo.txt
+BoardState.txt
+
+/*********************************************************************************************/

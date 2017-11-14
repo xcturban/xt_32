@@ -1,0 +1,11 @@
+[version_info]
+devName=WEB
+verMajor=1
+verMinor=0
+verInner=0
+verRev=0
+verBuild=27
+verInfo=标准
+verYear=2014
+verMonth=10
+verDay=27

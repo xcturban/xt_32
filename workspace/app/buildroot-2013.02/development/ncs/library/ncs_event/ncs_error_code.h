@@ -1,0 +1,14 @@
+#ifndef __NCS_ERROR_CODE_H__
+#define __NCS_ERROR_CODE_H__
+
+#define NCS_ERROR_NONE									(0)
+#define NCS_ERROR_CORE_NOT_INITED						(-2)
+#define NCS_ERROR_INVALID_ARGUMENT						(-3)
+#define NCS_ERROR_TIMER_CREATE_FAILED					(-4)
+#define NCS_ERROR_MALLOC_FAILED							(-5)
+#define NCS_ERROR_LOCAL_SOCKET_BIND_FAILED				(-6)
+#define NCS_ERROR_SOCKADDR_CONVERT_FAILED				(-7)
+#define NCS_ERROR_PTHREAD_CREATE_FAILED					(-8)
+#define NCS_ERROR_MULTICAST_JOIN_FAILED					(-9)
+
+#endif

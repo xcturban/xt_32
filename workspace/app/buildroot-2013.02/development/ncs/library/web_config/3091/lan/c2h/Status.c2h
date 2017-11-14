@@ -1,0 +1,85 @@
+﻿<HTML>
+    <HEAD>
+        <META http-equiv=Content-Language content=zh-cn>
+        <META http-equiv=Content-Type content="text/html; charset=utf-8">
+        <META http-equiv="Pragma" content="no-cache">
+        <META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+	<link href="/css/main.css" rel="stylesheet"/>
+	<script language=javascript type=text/javascript src=/js/Common.js ></script>
+    </HEAD>
+    <BODY onresize="Resize(this);">
+        <CENTER>
+            <FORM enctype=multipart/form-data method=GET action=/cgi-bin/response_Main.cgi>
+
+		<input type=hidden name=obj_htm value=status_cfg.htm >
+		<input type=hidden name=obj_x2i value=status_cfg.x2i >
+		<input type=hidden name=obj_c2h value=status_cfg.c2h >
+		<input type=hidden name=obj_ret value=/cache/Status.htm id=id_obj_ret >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.run_status ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.terminal_id ?>:</DIV>
+        <DIV class=class_col2>
+                                <DIV id=MAC>
+					<?cgi terminal.id ?>
+                                </DIV>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.ip_address ?>: </DIV>
+        <DIV class=class_col2>
+                                <DIV id=IP>
+					<?cgi terminal.ip ?>
+                                </DIV>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.mask ?>: </DIV>
+        <DIV class=class_col2>
+                                <DIV id=Mask>
+					<?cgi terminal.mask ?>
+                                </DIV>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.default_gate ?>: </DIV>
+        <DIV class=class_col2>
+                                <DIV id=Router>
+					<?cgi terminal.gate ?>
+                                </DIV>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.dns ?>:</DIV>
+        <DIV class=class_col2>
+                                <DIV id=DNS>
+					<?cgi terminal.dns1 ?>
+                                </DIV>
+	</DIV>
+      </DIV>
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value="<?cgi string=str.reflash ?>" type=submit name=b_save>&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+            </FORM>
+        </CENTER>
+    </BODY>
+<script>
+function reloadpage(){
+	this.location="/cgi-bin/response_Main.cgi?obj_htm=status_cfg.htm&obj_x2i=status_cfg.x2i&obj_c2h=status_cfg.c2h&obj_ret="+$("id_obj_ret").value;
+}
+
+$("id_obj_ret").value+="?time="+(new Date()).getTime();
+$("id_obj_ret").value=urlEncode($("id_obj_ret").value);
+setInterval("reloadpage()", 5000);
+</script>
+</HTML>

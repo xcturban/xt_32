@@ -1,0 +1,106 @@
+﻿<HTML>
+    <HEAD>
+        <META http-equiv=Content-Language content=zh-cn>
+        <META http-equiv=Content-Type content="text/html; charset=utf-8">
+        <META http-equiv="Pragma" content="no-cache">
+        <META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+	<link href="../css/Log.css" rel="stylesheet"/>
+    </HEAD>
+<style>
+.none{display:none;}
+</style>
+    <BODY onresize="Resize(this);">
+        <CENTER>
+            <FORM method=GET action=Log.cgi>
+<input type=hidden name=page_index value=0 />
+<input type=hidden name=page_size value=50 />
+<input type=hidden name=obj_c2h value=log.c2h />
+<input type=hidden name=obj_log value=usr.log />
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.system_logs ?></div>
+  </div>
+  <DIV class="div_main none" id=div_main>
+      <div style="height:10px; width:638px; "></div>
+      <DIV class=class_row style="border:0px;">
+      <DIV class=class_col1 style="border:0px;"><?cgi string=str.index ?></DIV>
+      <DIV class=class_col2 style="text-align:center;border:0px;"><?cgi string=str.logs_content ?></DIV>
+      </div>
+      <div style="height:8px; width:638px; "></div>	
+<!--   file content   -->
+	<?cgi fun_file_content ?>
+<!--   file content end   -->
+      <DIV class=class_row1>
+        <DIV id=id_page_select class=class_r1c1>
+        </DIV>
+      </DIV>
+      <DIV class=class_row1 style="border-top:1px solid #ff9933">
+        <INPUT value=0 type=hidden name=page_index>
+        <INPUT value=50 type=hidden name=page_size> 
+        <DIV class=class_r1c1>
+           &nbsp; <INPUT class=buttonBig value="<?cgi string=str.reflash ?>" type=submit name=b_save>&nbsp; 
+        </DIV>
+      </DIV>
+  </div>
+</DIV>
+            </FORM>
+        </CENTER>
+        <META http-equiv="Pragma" content="no-cache">
+    </BODY>
+<script language=javascript>
+var page_index="<?cgi page_index ?> ";
+var page_cnt="<?cgi page_cnt ?> ";
+function varInit(){
+	if(page_index==""){
+		page_index=0;
+	}
+	if(page_cnt==""){
+		page_cnt=0;
+	}
+	page_index=Number(page_index);
+	page_cnt=Number(page_cnt);
+}
+function $(str_id){
+	return document.getElementById(str_id);
+}
+function displayPageSelect(){
+	var start_pos;
+	var end_pos;
+	var str="";
+	start_pos=page_index-5;
+	if(start_pos<0){
+		start_pos=0;
+	}	
+	end_pos=page_index+5;
+	if(end_pos>page_cnt){
+		end_pos=page_cnt;
+	}
+	i=0;
+
+//	if(i<start_pos){
+		str+=('<a href=Log.cgi?page_index='+i+'&page_size=50&obj_c2h=log.c2h&obj_log=usr.log ><div class="class_page_select_item"><?cgi string=str.first_page ?></div></a>');
+//	}
+	for(i=start_pos;i<page_index;i++){
+		str+=('<a href=Log.cgi?page_index='+i+'&page_size=50&obj_c2h=log.c2h&obj_log=usr.log ><div class="class_page_select_item">'+(Number(i)+1)+'</div></a>');
+	}
+	str+=('<div class="class_page_select_item_selected">'+(Number(i)+1)+'</div>');
+	for(i=page_index+1;i<end_pos;i++){
+		str+=('<a href=Log.cgi?page_index='+i+'&page_size=50&obj_c2h=log.c2h&obj_log=usr.log ><div class="class_page_select_item">'+(Number(i)+1)+'</div></a>');
+	}
+	i=page_cnt-1;
+//	if(i>=end_pos){
+		str+=('<a href=Log.cgi?page_index='+i+'&page_size=50&obj_c2h=log.c2h&obj_log=usr.log ><div class="class_page_select_item"><?cgi string=str.last_page ?></div></a>');
+//	}
+	$("id_page_select").innerHTML=str;
+}
+varInit();
+displayPageSelect();
+
+String.prototype.replaceAll = function(s1,s2) { 
+    return this.replace(new RegExp(s1,"gm"),s2); 
+}
+$("div_main").innerHTML=$("div_main").innerHTML.replaceAll("buildroot user.notice syslog:", "");
+$("div_main").className="div_main";
+</script>
+</HTML>

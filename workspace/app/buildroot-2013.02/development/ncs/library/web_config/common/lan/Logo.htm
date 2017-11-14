@@ -1,0 +1,52 @@
+<html>
+<head>
+        <STYLE type=text/css>
+            .style1 {
+                color: #FFFFFF;
+                font-family: Arial, ËÎÌו;
+                font-size: 14pt;
+                font-weight: bold;
+                padding-right: 30;
+                white-space: nowrap;
+            }
+            .style2 {
+                color: #FFFFFF;
+                font-family: Arial, ËÎÌו;
+                font-size: 11pt;
+                font-weight: bold;
+                padding-right: 30;
+                white-space: nowrap;
+            }
+        </STYLE>
+</head>
+<body style="margin:0px; background-color:#00648C; font-size:0" onload="bd_load()">
+        <TABLE cellpadding=0 cellspacing=0 width=100%>
+            <TR>
+                <TD>
+                    <TABLE border=0 cellpadding=0 cellspacing=0 width=100%>
+                        <TR>
+                            <TD width=100% align=right>
+                                <BR>
+                                <SPAN class=style1>IP NETWORK INTERCOM SYSTEM
+                                </SPAN>
+                                <BR>
+                                <SPAN class=style2 id=Model>
+                                </SPAN>
+                            </TD>
+                        </TR>
+                    </TABLE>
+                </TD> 
+            </TR>
+            <TR>
+                <TD height=3>
+                </TD> 
+            </TR>
+        </TABLE>
+</body>
+<script>
+function bd_load(){
+  parent.bottomLeftFrame.location="/cache/Menu.htm?time="+(new Date()).getTime();
+  parent.mainFrame.location="/cache/Status.htm?time="+(new Date()).getTime();
+}
+</script>
+</html>

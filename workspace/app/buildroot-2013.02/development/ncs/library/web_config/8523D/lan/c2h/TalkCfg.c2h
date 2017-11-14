@@ -1,0 +1,148 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv=Content-Language content=zh-cn>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META http-equiv="Pragma" content="no-cache">
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+<link rel="stylesheet" href="/css/main.css"/>
+<script language=javascript type=text/javascript src=/js/Common.js ></script>
+</HEAD>
+<BODY onresize="Resize(this);">
+        <CENTER>
+            <FORM method=GET action=/cgi-bin/response_Main.cgi onsubmit="return on_submit()">
+		<input type=hidden name=obj_htm value=talk_cfg.htm >
+		<input type=hidden name=obj_x2i value=talk_cfg.x2i >
+		<input type=hidden name=obj_c2h value=talk_cfg.c2h >
+		<input type=hidden name=obj_sh value=response_TalkCfg.sh >
+		<input type=hidden name=obj_ret value=/cache/TalkCfg.htm id=id_obj_ret >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.talk_options ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talk_in_volume ?>:</DIV>
+        <DIV class=class_col2>
+            <select name=talk_cfg_volume_in class="l100" >
+            <script>select_option(0, 16, 0, "", "");</script>
+            </select>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talk_out_volume ?>:</DIV>
+        <DIV class=class_col2>
+            <select name=talk_cfg_volume_out class="l100" >
+            <script>select_option(0, 16, 0, "", "");</script>
+            </select>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talk_alert_volume ?>:</DIV>
+        <DIV class=class_col2>
+            <select name=talk_cfg_volume_ring class="l100" >
+            <script>select_option(0, 16, 0, "", "");</script>
+            </select>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.encode_mode ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=talk_cfg_is_pcm value=0 ><div class="l40 radio_text">ADPCM</div>
+	  <input class=radio type=radio name=talk_cfg_is_pcm value=1 ><div class="l40 radio_text">PCM</div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.sample_rate ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=talk_cfg_sample value=0 ><div class="l40 radio_text">8K</div>
+	  <input class=radio type=radio name=talk_cfg_sample value=1 ><div class="l40 radio_text">22K</div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="display:none;">
+        <DIV class=class_col1><?cgi string=str.key_calling ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=talk_cfg_key_down_call value=0 ><div class="l40 radio_text"><?cgi string=str.up_calling ?></div>
+	  <input class=radio type=radio name=talk_cfg_key_down_call value=1 ><div class="l40 radio_text"><?cgi string=str.down_calling ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="display:none;">
+        <DIV class=class_col1><?cgi string=str.join_talking ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=talk_cfg_enable_join value=0 ><div class="l40 radio_text"><?cgi string=str.disable ?></div>
+	  <input class=radio type=radio name=talk_cfg_enable_join value=1 ><div class="l40 radio_text"><?cgi string=str.enable ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talking ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=terminal_hangup value=0 ><div class="l40 radio_text"><?cgi string=str.unable_hang ?></div>
+	  <input class=radio type=radio name=terminal_hangup value=1 ><div class="l40 radio_text"><?cgi string=str.enable_hang ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talking ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=terminal_auto_answer value=0 ><div class="l40 radio_text"><?cgi string=str.manul_access ?></div>
+	  <input class=radio type=radio name=terminal_auto_answer value=1 ><div class="l40 radio_text"><?cgi string=str.auto_access ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talk_echo ?>:</DIV>
+        <DIV class=class_col2>
+	  <input class=radio type=radio name=talk_cfg_echo value=1 ><div class="l40 radio_text"><?cgi string=str.enable_use ?></div>
+          <input class=radio type=radio name=talk_cfg_echo value=0 ><div class="l40 radio_text"><?cgi string=str.disable_use ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talk_environment ?>:</DIV>
+        <DIV class=class_col2>
+	  <input class=radio type=radio name=talk_cfg_environment value=0 ><div class="l40 radio_text"><?cgi string=str.indoor ?></div>
+          <input class=radio type=radio name=talk_cfg_environment value=1 ><div class="l40 radio_text"><?cgi string=str.outdoor ?></div>
+	  <input class=radio type=radio name=talk_cfg_environment value=2 ><div class="l40 radio_text"><?cgi string=str.noise ?></div>
+	</DIV>
+      </DIV>
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value=<?cgi string=str.save ?> type=submit name=b_save>&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+       </FORM>
+</CENTER>
+</BODY>
+
+<script language="javascript">
+var obj_width=10;
+var box_width=150;
+var points=17;
+var division=box_width/(points);
+
+function on_submit(){
+	return true;
+}
+
+document.forms[0].talk_cfg_volume_in.selectedIndex = <?cgi talk_cfg.volume_in ?>0/10;
+document.forms[0].talk_cfg_volume_out.selectedIndex = <?cgi talk_cfg.volume_out ?>0/10;
+document.forms[0].talk_cfg_volume_ring.selectedIndex = <?cgi talk_cfg.volume_ring ?>0/10;
+
+put_radio("talk_cfg_is_pcm",<?cgi talk_cfg.is_pcm ?>0/10 );
+put_radio("talk_cfg_sample",<?cgi talk_cfg.sample ?>0/10 );
+put_radio("talk_cfg_key_down_call",<?cgi talk_cfg.key_down_call ?>0/10 );
+put_radio("talk_cfg_enable_join",<?cgi talk_cfg.enable_join ?>0/10 );
+put_radio("terminal_hangup",<?cgi terminal.hangup ?>0/10 );
+put_radio("terminal_auto_answer",<?cgi terminal.auto_answer ?>0/10 );
+put_radio("talk_cfg_echo",<?cgi talk_cfg.echo ?>0/10 );
+put_radio("talk_cfg_environment",<?cgi talk_cfg.environment ?>0/10 );
+
+$("id_obj_ret").value+="?time="+(new Date()).getTime();
+$("id_obj_ret").value=urlEncode($("id_obj_ret").value);
+</script>
+</HTML>

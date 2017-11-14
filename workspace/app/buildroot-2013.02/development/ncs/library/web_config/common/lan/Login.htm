@@ -1,0 +1,56 @@
+﻿<html>
+<head>
+<title><?cgi string=str.login ?></title>
+<style>
+body{BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 10px; FONT-FAMILY: "宋体", "Times New Roman"; COLOR: #003399; FONT-SIZE: 12px
+}
+#id_container{width:264px; *width:260px; margin-top:50px; background-color:#ece9d8; }
+#id_title{width:264px; *width:260px; height:24px; }
+#id_left_title{width:6px; height:24px; background:url("/images/1.jpg") no-repeat left; float:left;}
+#id_middle_title{width:253px; *width:249px; height:24px; background:url("/images/3.jpg") repeat-x; float:left; }
+#id_right_title{width:5px; height:24px; background:url("/images/2.jpg") no-repeat right; float:left;}
+#id_text_title{margin-left:1px; margin-top:3px; float:left; FONT-FAMILY: "宋体", "Times New Roman"; COLOR: white; FONT-SIZE: 14px; }
+#id_form{width:260px; border-left:2px solid #0029ca;border-right:2px solid #00229e; border-bottom:2px solid #091c6b;}
+#id_text_explain{ width:240px; margin-top:10px; text-align:left;}
+.c_left{float:left;}
+.c_right{float:right;}
+.c_row{ width:240px; height:20px; margin-top:5px; line-height:20px;}
+.c_text{width:140px; height:20px;}
+</style>
+</head>
+<body>
+<form method=post action="/cgi-bin/response_Login.cgi" >
+<center>
+<div id=id_container >
+  <div id=id_title>
+    <div id=id_left_title></div>
+    <div id=id_middle_title><div id=id_text_title><?cgi string=str.login ?></div></div>
+    <div id=id_right_title></div>
+  </div>
+  <div id=id_form>
+  <div id=id_top_img>
+    <img src="/images/4.jpg" width="100%">
+  </div>
+  <div id=id_text_explain>
+    <?cgi string=str.login_request_username_and_password ?><br/>
+    <div class=c_row>
+    <div class=c_left><?cgi string=str.username ?>:</div><div class=c_right><input type=text class=c_text name=username></div>
+    </div>
+    <div class=c_row>
+    <div class=c_left><?cgi string=str.password ?>:</div><div class=c_right><input type=password class=c_text name=password ></div>
+    </div>
+<br />
+    <div class=c_row>
+    <div class=c_right>
+    <input type=submit value=<?cgi string=str.sure ?> style="height:20px;width:60px;" />&nbsp;
+    <input type=reset value=<?cgi string=str.cancel ?> style="height:20px;width:60px;">
+    </div>
+    </div>
+    <div id=id_bottom style="width:20px; height:6px; line-height:6px;"></div>
+  </div>
+  </div>
+</div>
+</center>
+</form>
+</body>
+</html>

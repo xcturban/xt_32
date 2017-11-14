@@ -1,0 +1,96 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv=Content-Language content=zh-cn>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META http-equiv="Pragma" content="no-cache">
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+<link rel="stylesheet" href="../css/main.css"/>
+<script language=javascript type=text/javascript src=/js/Common.js ></script>
+</HEAD>
+<BODY onresize="Resize(this);">
+        <CENTER>
+            <FORM method=GET action=/cgi-bin/response_Main.cgi onsubmit="return on_submit()">
+		<input type=hidden name=obj_htm value=server_cfg.htm >
+		<input type=hidden name=obj_x2i value=server_cfg.x2i >
+		<input type=hidden name=obj_c2h value=server_cfg.c2h >
+		<input type=hidden name=obj_sh value=response_ServerCfg.sh >
+		<input type=hidden name=obj_ret value=/cache/ServerCfg.htm id=id_obj_ret >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.server_options ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.mast_server ?>:</DIV>
+        <DIV class=class_col2>
+	  <INPUT class="text l100" maxLength=15 name=server_cfg_ip_server1 value=<?cgi server_cfg.ip_server1 ?> >
+	  <INPUT class="text l40" maxLength=5 name=server_cfg_port_server1 value=<?cgi server_cfg.port_server1 ?> >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.slave_server ?>:</DIV>
+        <DIV class=class_col2>
+	  <INPUT class="text l100" maxLength=15 name=server_cfg_ip_server2 value=<?cgi server_cfg.ip_server2 ?> >
+	  <INPUT class="text l40" maxLength=5 name=server_cfg_port_server2 value=<?cgi server_cfg.port_server2 ?> >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.version_server ?>:</DIV>
+        <DIV class=class_col2>
+	  <INPUT class="text l100" maxLength=15 name=server_cfg_ip_version value=<?cgi server_cfg.ip_version ?> >
+	  <INPUT class="text l40" maxLength=5 name=server_cfg_port_version value=<?cgi server_cfg.port_version ?> >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.file_server ?>:</DIV>
+        <DIV class=class_col2>
+	  <INPUT class="text l100" maxLength=15 name=server_cfg_ip_ftp value=<?cgi server_cfg.ip_ftp ?> >
+	  <INPUT class="text l40" maxLength=5 name=server_cfg_port_ftp value=<?cgi server_cfg.port_ftp ?> >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.file_server_username ?>:</DIV>
+        <DIV class=class_col2>
+	  <INPUT class="text l100" maxLength=15 name=server_cfg_username_ftp value=<?cgi server_cfg.username_ftp ?> >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.file_server_password ?>:</DIV>
+        <DIV class=class_col2>
+	  <INPUT class="text l100" maxLength=15 name=server_cfg_password_ftp value=<?cgi server_cfg.password_ftp ?> >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.internal_time_request ?>:</DIV>
+        <DIV class=class_col2>
+	  <select class="l40" name=server_cfg_interval_request_login id=server_cfg_interval_request_login value=<?cgi server_cfg.interval_request_login ?> >
+	    <script>select_option(0, 30, 0, "", "<?cgi string=str.seconds ?>");</script>
+	  </select>
+	</DIV>
+      </DIV>
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value=<?cgi string=str.save ?> type=submit name=b_save>&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+       </FORM>
+</CENTER>
+</BODY>
+
+<script language="javascript">
+function on_submit(){
+	if(confirm("<?cgi string=str.device_will_reboot ?>")){
+	  return true;
+	}else{
+	  return false;
+	}
+}
+$("id_obj_ret").value=urlEncode($("id_obj_ret").value);
+$("server_cfg_interval_request_login").selectedIndex=<?cgi server_cfg.interval_request_login ?>0/10;
+</script>
+</HTML>

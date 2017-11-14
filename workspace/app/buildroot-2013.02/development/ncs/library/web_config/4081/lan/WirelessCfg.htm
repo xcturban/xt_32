@@ -1,0 +1,112 @@
+<HTML>
+    <HEAD>
+        <META http-equiv=Content-Language content=zh-cn>
+        <META http-equiv=Content-Type content="text/html; charset=utf-8">
+        <META http-equiv="Pragma" content="no-cache">
+        <META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+        <link rel="stylesheet"  href="/css/main.css" />
+	<script language=javascript src=/js/Common.js type=text/javascript ></script>
+    </HEAD>
+<BODY onresize="Resize(this);" onload="bd_load()">
+<iframe style="display:none" name=db onload="db_load()" ></iframe>
+        <CENTER>
+            <FORM method=GET action=/cgi-bin/response_x2i.cgi onsubmit="return onSubmit()">
+		<input type=hidden name=obj_x2i value=wireless_cfg.x2i >
+		<input type=hidden name=obj_sh value=response_Wireless.sh >
+		<input type=hidden name=obj_ret value=/cache/WirelessCfg.htm id=id_obj_ret >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.wireless_options ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+      <DIV class=class_row style="display:none;">
+        <DIV class=class_col1><?cgi string=str.24Gwireless ?>:</DIV>
+        <DIV class=class_col2>
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="display:none;">
+        <DIV class=class_col1><?cgi string=str.sample_rate ?>:</DIV>
+        <DIV class=class_col2>
+			<input class=radio type=radio id=wireless_cfg_samplerate name=wireless_cfg_samplerate value=0 ><div class="l40 radio_text">16K</div>
+			<input class=radio type=radio id=wireless_cfg_samplerate name=wireless_cfg_samplerate value=1 ><div class="l40 radio_text">22K</div>
+		</DIV>
+      </DIV>
+      
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.chanel_num ?>:</DIV>
+        <DIV class=class_col2>
+            <select name=wireless_cfg_channel_id id=wireless_cfg_channel_id class="l100" >
+            <script>select_option(1, 33, 0, "", "");</script>
+            </select>
+		</DIV>
+      </DIV>
+  
+	  
+	<DIV class=class_row style="display:none;">
+        <DIV class=class_col1><?cgi string=str.bluetooth_set ?>:</DIV>
+        <DIV class=class_col2></DIV>
+    </DIV>
+	 
+     <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.bluetooth_name ?>: </DIV>
+        <DIV class=class_col2>
+        	<INPUT class="text l100" maxLength=15 id=wireless_cfg_bt_name name=wireless_cfg_bt_name value="" >
+		</DIV>
+     </DIV>
+	  
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value=<?cgi string=str.save ?> type=submit name=b_save>&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+            </FORM>
+        </CENTER>
+        <META http-equiv="Pragma" content="no-cache">
+
+<!-- ************* help page , must add iniHelpButton() in js segment ****************** -->
+<div class="help_container">
+  <div class="help_left"><div class="help_top_space"></div><div class="help_button_0" id="help_button" ></div></div>
+  <div class="help_right_0" id="help_right">
+    <div class="help_head" ><?cgi string=str.help_message ?></div>
+    <iframe name=help class="help_text" frameBorder=0 src="" ></iframe>
+  </div>
+</div>
+<!-- ************* help page end ****************** -->
+
+    </BODY>
+<script language="javascript">
+function bd_load(){
+  window.frames["db"].document.location="/ini/sys_cfg.txt?time="+(new Date()).getTime();
+  var ret = location.toString().substring(location.toString().lastIndexOf("/")+1, location.toString().indexOf(".htm")+4);
+  window.frames["help"].document.location="/cache/Help"+ret+"?time="+(new Date()).getTime();
+  iniHelpButton();
+}
+
+function db_load(){
+  var str=window.frames["db"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var db=ini2json(str);
+
+  put_radio("wireless_cfg_samplerate", parseInt(db.wireless_cfg.samplerate) );
+  document.forms[0].wireless_cfg_channel_id.selectedIndex = parseInt(db.wireless_cfg.channel_id) - 1;
+  
+  document.forms[0].wireless_cfg_bt_name.value=decodeURIComponent(db.wireless_cfg.bt_name);
+}
+
+function onSubmit(){
+
+  $("id_obj_ret").value=urlEncode($("id_obj_ret").value);
+  return true;
+}
+
+</script>
+<HTML>

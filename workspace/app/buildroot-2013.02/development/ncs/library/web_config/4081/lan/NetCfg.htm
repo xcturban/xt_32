@@ -1,0 +1,262 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv=Content-Language content=zh-cn>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META http-equiv="Pragma" content="no-cache">
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+<link rel="stylesheet" href="/css/main.css"/>
+<script language=javascript type=text/javascript src=/js/Common.js ></script>
+</HEAD>
+<BODY onresize="Resize(this);" onload="bd_load()">
+<iframe style="display:none" name=db onload="db_load()" ></iframe>
+        <CENTER>
+            <FORM method=GET action=/cgi-bin/response_x2i.cgi onsubmit="return on_submit()">
+		<input type=hidden name=obj_x2i value=net_cfg.x2i >
+		<input type=hidden name=obj_sh value=response_NetCfg.sh >
+		<input type=hidden name=obj_ret value=/cache/NetCfg.htm id=id_obj_ret >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.net_options ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.device_id ?>:</DIV>
+        <DIV class=class_col2>
+	  <INPUT class="text l100" maxLength=5 id=terminal_id name=terminal_id value=1 >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.link_type ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=terminal_is_dynamic_ip value=0 onclick="on_select_change_dynamic(0);" ><div class="l40 radio_text"><?cgi string=str.static_ip ?></div>
+	  <input class=radio type=radio name=terminal_is_dynamic_ip value=1 onclick="on_select_change_dynamic(1);" ><div class="l40 radio_text"><?cgi string=str.dynamic_ip ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.terminal_ip ?>: </DIV>
+        <DIV class=class_col2>
+		<INPUT class="text l100" maxLength=15 id=terminal_ip name=terminal_ip value="" >
+		<INPUT class="text l40" maxLength=5 id=terminal_port name=terminal_port value="" >(<?cgi string=str.default ?>2046)
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.mask ?>:</DIV>
+        <DIV class=class_col2>
+		<INPUT class="text l100" maxLength=15 id=terminal_mask name=terminal_mask value="" >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.default_gate ?>: </DIV>
+        <DIV class=class_col2>
+        	<INPUT class="text l100" maxLength=15 id=terminal_gate name=terminal_gate value="" >&nbsp;(<?cgi string=str.chooseful ?>)
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.mast_dns ?>:</DIV>
+        <DIV class=class_col2>
+        	<INPUT class="text l100" maxLength=15 id=terminal_dns1 name=terminal_dns1 value="" >&nbsp;(<?cgi string=str.chooseful ?>)
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.slave_dns ?>: </DIV>
+        <DIV class=class_col2>
+        	<INPUT class="text l100" maxLength=15 id=terminal_dns2 name=terminal_dns2 value="" >&nbsp;(<?cgi string=str.chooseful ?>)
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="display:none;">
+        <DIV class=class_col1><?cgi string=str.storage_select ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=terminal_storage value=0 ><div class="l40 radio_text"><?cgi string=str.auto ?></div>
+	  <input class=radio type=radio name=terminal_storage value=1 ><div class="l40 radio_text"><?cgi string=str.sd_card ?></div>
+	  <input class=radio type=radio name=terminal_storage value=2 ><div class="l40 radio_text"><?cgi string=str.nand ?></div>
+	</DIV>
+      </DIV>
+
+      <!---------------- arp table 5 items  ----------------------->
+      <DIV class=class_row style="display:none">
+        <DIV class=class_col1><?cgi string=str.static_arp ?></DIV>
+        <DIV class=class_col2>
+		<div class="l100" style="float:left;" ><?cgi string=str.ip_address ?></div>
+		<div class="l100" style="float:left; margin-left:3px;" ><?cgi string=str.mac_address ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="display:none">
+        <DIV class=class_col1><?cgi string=str.enable_use ?>ARP1<input type="checkbox" id=terminal_arp_enable1_tmp ></DIV>
+        <DIV class=class_col2>
+		<INPUT type="hidden" id=terminal_arp_enable1 name=terminal_arp_enable1 value=0 >
+		<INPUT class="text l100" maxLength=15 id=terminal_arp_ip1 name=terminal_arp_ip1 value="" >
+		<INPUT class="text l100" maxLength=17 id=terminal_arp_mac1 name=terminal_arp_mac1 value="" >
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="display:none">
+        <DIV class=class_col1><?cgi string=str.enable_use ?>ARP2<input type="checkbox" id=terminal_arp_enable2_tmp ></DIV>
+        <DIV class=class_col2>
+		<INPUT type="hidden" id=terminal_arp_enable2 name=terminal_arp_enable2 value=0 >
+		<INPUT class="text l100" maxLength=15 id=terminal_arp_ip2 name=terminal_arp_ip2 value="" >
+		<INPUT class="text l100" maxLength=17 id=terminal_arp_mac2 name=terminal_arp_mac2 value="" >
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="display:none">
+        <DIV class=class_col1><?cgi string=str.enable_use ?>ARP3<input type="checkbox" id=terminal_arp_enable3_tmp ></DIV>
+        <DIV class=class_col2>
+		<INPUT type="hidden" id=terminal_arp_enable3 name=terminal_arp_enable3 value=0 >
+		<INPUT class="text l100" maxLength=15 id=terminal_arp_ip3 name=terminal_arp_ip3 value="" >
+		<INPUT class="text l100" maxLength=17 id=terminal_arp_mac3 name=terminal_arp_mac3 value="" >
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="display:none">
+        <DIV class=class_col1><?cgi string=str.enable_use ?>ARP4<input type="checkbox" id=terminal_arp_enable4_tmp ></DIV>
+        <DIV class=class_col2>
+		<INPUT type="hidden" id=terminal_arp_enable4 name=terminal_arp_enable4 value=0 >
+		<INPUT class="text l100" maxLength=15 id=terminal_arp_ip4 name=terminal_arp_ip4 value="" >
+		<INPUT class="text l100" maxLength=17 id=terminal_arp_mac4 name=terminal_arp_mac4 value="" >
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="display:none">
+        <DIV class=class_col1><?cgi string=str.enable_use ?>ARP5<input type="checkbox" id=terminal_arp_enable5_tmp ></DIV>
+        <DIV class=class_col2>
+		<INPUT type="hidden" id=terminal_arp_enable5 name=terminal_arp_enable5 value=0 >
+		<INPUT class="text l100" maxLength=15 id=terminal_arp_ip5 name=terminal_arp_ip5 value="" >
+		<INPUT class="text l100" maxLength=17 id=terminal_arp_mac5 name=terminal_arp_mac5 value="" >
+	</DIV>
+      </DIV> 
+      <!---------------- arp table 5 items end ----------------------->
+
+
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value=<?cgi string=str.save ?> type=submit >&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+       </FORM>
+</CENTER>
+
+<!-- ************* help page , must add iniHelpButton() in js segment ****************** -->
+<div class="help_container">
+  <div class="help_left"><div class="help_top_space"></div><div class="help_button_0" id="help_button" ></div></div>
+  <div class="help_right_0" id="help_right">
+    <div class="help_head" ><?cgi string=str.help_message ?></div>
+    <iframe name=help class="help_text" frameBorder=0 src="" ></iframe>
+  </div>
+</div>
+<!-- ************* help page end ****************** -->
+
+</BODY>
+
+<script language="javascript">
+function bd_load(){
+  window.frames["db"].document.location="/ini/sys_cfg.txt?time="+(new Date()).getTime();
+  var ret = location.toString().substring(location.toString().lastIndexOf("/")+1, location.toString().indexOf(".htm")+4);
+  window.frames["help"].document.location="/cache/Help"+ret+"?time="+(new Date()).getTime();
+  iniHelpButton();
+}
+
+function db_load(){
+  var str=window.frames["db"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var db=ini2json(str);
+  document.forms[0].terminal_id.value=db.terminal.id;
+  document.forms[0].terminal_ip.value=db.terminal.ip;
+  document.forms[0].terminal_port.value=db.terminal.port;
+  document.forms[0].terminal_mask.value=db.terminal.mask;
+  document.forms[0].terminal_gate.value=db.terminal.gate;
+  document.forms[0].terminal_dns1.value=db.terminal.dns1;
+  document.forms[0].terminal_dns2.value=db.terminal.dns2;
+  document.forms[0].terminal_arp_ip1.value=db.terminal.arp_ip1;
+  document.forms[0].terminal_arp_mac1.value=db.terminal.arp_mac1;
+  document.forms[0].terminal_arp_ip2.value=db.terminal.arp_ip2;
+  document.forms[0].terminal_arp_mac2.value=db.terminal.arp_mac2;
+  document.forms[0].terminal_arp_ip3.value=db.terminal.arp_ip3;
+  document.forms[0].terminal_arp_mac3.value=db.terminal.arp_mac3;
+  document.forms[0].terminal_arp_ip4.value=db.terminal.arp_ip4;
+  document.forms[0].terminal_arp_mac4.value=db.terminal.arp_mac4;
+  document.forms[0].terminal_arp_ip5.value=db.terminal.arp_ip5;
+  document.forms[0].terminal_arp_mac5.value=db.terminal.arp_mac5;
+
+  put_radio("terminal_is_dynamic_ip", db.terminal.is_dynamic_ip );
+  put_radio("terminal_storage", db.terminal.storage );
+  on_select_change_dynamic(get_radio("terminal_is_dynamic_ip"));
+
+  /********* set the arp table ****************/
+  $("terminal_arp_enable1_tmp").checked=parseInt(db.terminal.arp_enable1);
+  $("terminal_arp_enable2_tmp").checked=parseInt(db.terminal.arp_enable2);
+  $("terminal_arp_enable3_tmp").checked=parseInt(db.terminal.arp_enable3);
+  $("terminal_arp_enable4_tmp").checked=parseInt(db.terminal.arp_enable4);
+  $("terminal_arp_enable5_tmp").checked=parseInt(db.terminal.arp_enable5);
+  on_arp_check($("terminal_arp_enable1_tmp").checked, "terminal_arp_enable1", "terminal_arp_ip1", "terminal_arp_mac1");
+  on_arp_check($("terminal_arp_enable2_tmp").checked, "terminal_arp_enable2", "terminal_arp_ip2", "terminal_arp_mac2");
+  on_arp_check($("terminal_arp_enable3_tmp").checked, "terminal_arp_enable3", "terminal_arp_ip3", "terminal_arp_mac3");
+  on_arp_check($("terminal_arp_enable4_tmp").checked, "terminal_arp_enable4", "terminal_arp_ip4", "terminal_arp_mac4");
+  on_arp_check($("terminal_arp_enable5_tmp").checked, "terminal_arp_enable5", "terminal_arp_ip5", "terminal_arp_mac5");
+
+}
+
+function on_submit(){
+	$("id_obj_ret").value=urlEncode($("id_obj_ret").value);
+	on_select_change_dynamic(0);
+
+	on_arp_enable(true, "terminal_arp_ip1", "terminal_arp_mac1");
+	on_arp_enable(true, "terminal_arp_ip2", "terminal_arp_mac2");
+	on_arp_enable(true, "terminal_arp_ip3", "terminal_arp_mac3");
+	on_arp_enable(true, "terminal_arp_ip4", "terminal_arp_mac4");
+	on_arp_enable(true, "terminal_arp_ip5", "terminal_arp_mac5");
+
+	return true;
+}
+
+function on_select_change_dynamic(t){
+  if(t==0){
+	/* static */
+	$("terminal_ip").disabled=false;
+	$("terminal_port").disabled=false;
+	$("terminal_mask").disabled=false;
+	$("terminal_gate").disabled=false;
+  }else{
+	$("terminal_ip").disabled=true;
+	$("terminal_port").disabled=true;
+	$("terminal_mask").disabled=true;
+	$("terminal_gate").disabled=true;
+  }
+}
+
+function on_arp_enable(sel, ipid, macid){
+  if(sel==0||sel=="false"){
+    $(ipid).disabled=true;
+    $(macid).disabled=true;
+  }else{
+    $(ipid).disabled=false;
+    $(macid).disabled=false;
+  }
+}
+
+function on_arp_check(sel, enableid, ipid, macid){
+  $(enableid).value=(sel==0||sel=="false")?0:1;
+  on_arp_enable(sel, ipid, macid);
+}
+
+$("terminal_arp_enable1_tmp").onclick=function(){
+	on_arp_check($("terminal_arp_enable1_tmp").checked, "terminal_arp_enable1", "terminal_arp_ip1", "terminal_arp_mac1");
+}
+$("terminal_arp_enable2_tmp").onclick=function(){
+	on_arp_check($("terminal_arp_enable2_tmp").checked, "terminal_arp_enable2", "terminal_arp_ip2", "terminal_arp_mac2");
+}
+$("terminal_arp_enable3_tmp").onclick=function(){
+	on_arp_check($("terminal_arp_enable3_tmp").checked, "terminal_arp_enable3", "terminal_arp_ip3", "terminal_arp_mac3");
+}
+$("terminal_arp_enable4_tmp").onclick=function(){
+	on_arp_check($("terminal_arp_enable4_tmp").checked, "terminal_arp_enable4", "terminal_arp_ip4", "terminal_arp_mac4");
+}
+$("terminal_arp_enable5_tmp").onclick=function(){
+	on_arp_check($("terminal_arp_enable5_tmp").checked, "terminal_arp_enable5", "terminal_arp_ip5", "terminal_arp_mac5");
+}
+</script>
+</HTML>

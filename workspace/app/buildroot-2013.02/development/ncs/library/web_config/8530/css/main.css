@@ -1,0 +1,71 @@
+body{BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 10px; FONT-FAMILY: "ËÎÌו", "Times New Roman"; COLOR: #003399; FONT-SIZE: 75%;}
+.margin_left_10px{margin-left:10px;}
+.container{ width:502px; margin-top:50px;}
+.class_page_select_item {LINE-HEIGHT: 24px; WIDTH: 15px; FLOAT: left; HEIGHT: 24px; MARGIN-LEFT: 2px;}
+.title{width:504px; *width:502px; height:24px; float:left; text-align:left; background-color:#0099cc;}
+.title_Key{width:554px; *width:552px; height:24px; float:left; text-align:left; background-color:#0099cc;}
+.title_left{width:7px; height:24px; float:left; }
+.title_right{width:497px; *width:495px; height:24px; line-height:24px; float:left; color:white;  FONT-SIZE: 12px; }
+.title_right_Key{width:547px; *width:545px; height:24px; line-height:24px; float:left; color:white;  FONT-SIZE: 12px; }
+.div_main_edge{width:502px; border-left:1px solid #ff9933; border-right:1px solid #ff9933; border-bottom:1px solid #ff9933; background-color:#f5f5f5; float:left; overflow:hidden;}
+.div_main_edgeKey{width:550px; border-left:1px solid #ff9933; border-right:1px solid #ff9933; border-bottom:1px solid #ff9933; background-color:#f5f5f5; float:left; overflow:hidden;}
+.div_mainKey{width:540px; overflow:hidden;}
+.div_main{width:402px; overflow:hidden;}
+.class_row { WIDTH: 400px; min-height:20px; FLOAT: none; margin-top:10px; margin-bottom:10px; overflow:hidden; }
+.class_rowKey { WIDTH: 540px; min-height:20px; FLOAT: none; margin-top:10px; margin-bottom:10px; overflow:hidden; }
+.class_col1 {TEXT-ALIGN: left; WIDTH: 120px; FLOAT: left; line-height:18px;}
+.class_col2 {WIDTH: 280px; FLOAT: left; text-align:left; line-height:18px;}
+.class_rowalone{ WIDTH: 400px; min-height:20px; FLOAT: none; margin-top:10px; margin-bottom:10px; overflow:hidden; }
+.class_col1alone {TEXT-ALIGN: left; WIDTH: 100px; FLOAT: left; line-height:18px;}
+.class_col2alone {WIDTH: 160px; FLOAT: left; text-align:left; line-height:18px;}
+.class_col3alone {WIDTH: 80px; FLOAT: left; text-align:left; line-height:18px;}
+.class_row1 {WIDTH: 500px; FLOAT: none; border-top:1px solid #ff9933; }
+.class_row1Key {WIDTH: 520px; FLOAT: none; border-top:1px solid #ff9933; }
+.class_r1c1 {TEXT-ALIGN: center; WIDTH: 400px; margin-top:3px; margin-bottom:2px;}
+.text{BORDER: #183ead 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; HEIGHT: 18px; COLOR: #000000; FONT-SIZE: 12px; FONT-WEIGHT: normal; PADDING-LEFT: 3px; PADDING-RIGHT: 3px;}
+select{BORDER: #183ead 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; HEIGHT: 18px; COLOR: #000000; FONT-SIZE: 12px; FONT-WEIGHT: normal; PADDING-LEFT: 3px; PADDING-RIGHT: 0px;}
+input.text{BORDER: #183ead 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; HEIGHT: 18px; COLOR: #000000; FONT-SIZE: 12px; FONT-WEIGHT: normal; PADDING-LEFT: 3px; PADDING-RIGHT: 3px;}
+input.button{BORDER: #183ead 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; HEIGHT: 18px; COLOR: #000000; FONT-SIZE: 12px; FONT-WEIGHT: normal; BACKGROUND-COLOR: #ddddff;}
+input.radio{float:left;}
+.l100{width:100px;}
+.160{width:65px;}
+.l40{width:60px;}
+.l30{width:30px;}
+.c_text{width:140px; height:20px;}
+.c_gray{color:gray; }
+.c_none{display:none;}
+.c_block{display:;}
+
+.top_text_middle{ width:30px; height:32px; margin-left:10px; float:left; }
+.container1{height:32px; width:150px; margin-left:0px; margin-top:0px; float:left; overflow:hidden; background:url(../images/container4.gif) repeat-x; }
+.container1_top{height:5px; line-height:5px; width:150px; float:left; overflow:hidden; }
+.container1_middle{height:22px; width:150px; float:left;}
+.container1_finger{height:22px; width:11px; margin-top:0px;float:left; background:url(../images/button.gif) no-repeat; overflow:hidden;}
+.radio_text{float:left;}
+.left{float:left;}
+.align_center{text-align:center;}
+
+.title_left_num{height:24px; line-height:24px; color:white;  FONT-SIZE: 12px; float:left;}
+.title_right_num{width:30px; height:24px; line-height:24px; color:white;  FONT-SIZE: 12px; float:left;}
+.container_key{ width:552px; margin-top:10px;}
+.class_row_key { WIDTH: 520px; min-height:20px; FLOAT: none; margin-top:6px; margin-bottom:6px; overflow:hidden; }
+.class_col1_key {TEXT-ALIGN: left; WIDTH: 50px; FLOAT: left; line-height:18px;}
+.class_col2_key {WIDTH: 75px; FLOAT: left; text-align:left; line-height:18px;}
+.class_col4_key {WIDTH: 85px; FLOAT: left; text-align:left; line-height:18px;}
+.class_col3_key {WIDTH: 230px; FLOAT: right; text-align:left; line-height:18px;}
+.board_index{width:30px; height:18px; line-height:18px; float:left; text-align:center; border:1px solid #E1E2E3; margin-right:5px; cursor:pointer; } 
+.board_index_selected{width:30px; height:18px; line-height:18px; float:left; text-align:center; margin-right:5px; cursor:pointer; }
+.board_index:hover{width:30px; height:18px; line-height:18px; float:left; text-align:center; border:1px solid blue; margin-right:5px; cursor:pointer; background-color:#E1E2E3;}
+
+.help_container{position:absolute; z-index:9999; top:1%; right:0px; background-color:white;  height:99%; overflow:hidden; float:left; overflow:hidden; }
+.help_left{ width:11px; *width:10px; height:90%; float:left; overflow:hidden;}
+.help_top_space{width:11px; *width:10px; height:40%;  overflow:hidden;}
+.help_button{width:10px; height:50px; margin-top:48%; background:url(/images/right.jpg); border-top:1px solid white; border-left:1px solid white; border-bottom:1px solid white;  overflow:hidden;}
+.help_button:hover{width:10px; height:50px; margin-top:48%; background:url(/images/right.jpg); border-top:1px solid gray; border-left:1px solid gray; border-bottom:1px solid gray;  overflow:hidden;}
+.help_button_0{width:10px; height:50px; margin-top:48%; background:url(/images/left.jpg); border-top:1px solid white; border-left:1px solid white; border-bottom:1px solid white;  overflow:hidden;}
+.help_button_0:hover{width:10px; height:50px; margin-top:48%; background:url(/images/left.jpg); border-top:1px solid gray; border-left:1px solid gray; border-bottom:1px solid gray;  overflow:hidden;}
+.help_right{ width:288px; height:99%; border-left:1px solid gray; background-color:#DDDDDD; float:left; overflow:hidden;}
+.help_right_0{ display:none; overflow:hidden;}
+.help_head{ width:288px; height:24px; line-height:24px; background-color:#00648c; text-align:center; FONT-WEIGHT: bold; FONT-SIZE: 16px; COLOR: white;  float:left; overflow:hidden;}
+.help_text{ width:278px; margin-left:5px; margin-top:5px; height:100%; text-align:left; overflow:hidden;}
+.l50{width:50px;}

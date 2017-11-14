@@ -1,0 +1,220 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv=Content-Language content=zh-cn>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META http-equiv="Pragma" content="no-cache">
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+<link rel="stylesheet" href="../css/main.css"/>
+<script language=javascript type=text/javascript src=../js/Common.js ></script>
+</HEAD>
+<BODY onresize="Resize(this);">
+        <CENTER>
+            <FORM method=GET action=/cgi-bin/response_Main.cgi onsubmit="return on_submit()">
+		<input type=hidden name=obj_htm value=audio_cfg.htm >
+		<input type=hidden name=obj_x2i value=audio_cfg.x2i >
+		<input type=hidden name=obj_c2h value=audio_cfg.c2h >
+		<input type=hidden name=obj_sh value=response_AudioCfg.sh >
+		<input type=hidden name=obj_ret value=/cache/AudioCfg.htm id=id_obj_ret >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="../images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.vedio_options ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talk_in_volume ?>:</DIV>
+        <DIV class=class_col2>
+	  <div class=container1 >                    <!--***********begin of finger************-->
+	  <div class=container1_top></div>
+	  <div class=container1_middle>
+	    <div id="button_1" class=container1_finger><div style="display:none">111</div></div>
+	  </div>
+	  </div>                 
+	  <div class=top_text_middle id=key_1 >0</div><!--***********end of finger************-->
+	</DIV>
+      </DIV>
+      <input type=hidden name=talk_volume_in value=<?cgi talk.volume_in ?> >
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talk_out_volume ?>:</DIV>
+        <DIV class=class_col2>
+	  <div class=container1 >                    <!--***********begin of finger************-->
+	  <div class=container1_top></div>
+	  <div class=container1_middle>
+	    <div id="button_2" class=container1_finger><div style="display:none">111</div></div>
+	  </div>
+	  </div>                 
+	  <div class=top_text_middle id=key_2 >0</div><!--***********end of finger************-->
+	</DIV>
+      </DIV>
+      <input type=hidden name=talk_volume_out value=<?cgi talk.volume_out ?> >
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.broadcast_in_volume ?>:</DIV>
+        <DIV class=class_col2>
+	  <div class=container1 >                    <!--***********begin of finger************-->
+	  <div class=container1_top></div>
+	  <div class=container1_middle>
+	    <div id="button_3" class=container1_finger><div style="display:none">111</div></div>
+	  </div>
+	  </div>                 
+	  <div class=top_text_middle id=key_3 >0</div><!--***********end of finger************-->
+	</DIV>
+      </DIV>
+      <input type=hidden name=broadcast_volume_in value=<?cgi broadcast.volume_in ?> >
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.broadcast_out_volume ?>:</DIV>
+        <DIV class=class_col2>
+	  <div class=container1 >                    <!--***********begin of finger************-->
+	  <div class=container1_top></div>
+	  <div class=container1_middle>
+	    <div id="button_4" class=container1_finger><div style="display:none">111</div></div>
+	  </div>
+	  </div>                 
+	  <div class=top_text_middle id=key_4 >0</div><!--***********end of finger************-->
+	</DIV>
+      </DIV>
+      <input type=hidden name=broadcast_volume_out value=<?cgi broadcast.volume_out ?> >
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.volume_ring ?>:</DIV>
+        <DIV class=class_col2>
+	  <div class=container1 >                    <!--***********begin of finger************-->
+	  <div class=container1_top></div>
+	  <div class=container1_middle>
+	    <div id="button_5" class=container1_finger><div style="display:none">111</div></div>
+	  </div>
+	  </div>                 
+	  <div class=top_text_middle id=key_5 >0</div><!--***********end of finger************-->
+	</DIV>
+      </DIV>
+      <input type=hidden name=terminal_volume_ring value=<?cgi terminal.volume_ring ?> >
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talk_sample_rate ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=talk_sample_rate value=0 ><div class="l40 radio_text">8K</div>
+	  <input class=radio type=radio name=talk_sample_rate value=1 ><div class="l40 radio_text">22K</div>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talk_encode_mode ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=talk_encode_mode value=0 ><div class="l40 radio_text">ADPCM</div>
+	  <input class=radio type=radio name=talk_encode_mode value=1 ><div class="l40 radio_text"><?cgi string=str.none ?></div>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talk_echo ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=talk_echo value=0 ><div class="l40 radio_text"><?cgi string=str.enable_use ?></div>
+	  <input class=radio type=radio name=talk_echo value=1 ><div class="l40 radio_text"><?cgi string=str.disable_use ?></div>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.broadcast_sample_rate ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=broadcast_sample_rate value=0 ><div class="l40 radio_text">8K</div>
+	  <input class=radio type=radio name=broadcast_sample_rate value=1 ><div class="l40 radio_text">22K</div>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.broadcast_encode_mode ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=broadcast_encode_mode value=0 ><div class="l40 radio_text">ADPCM</div>
+	  <input class=radio type=radio name=broadcast_encode_mode value=1 ><div class="l40 radio_text"><?cgi string=str.none ?></div>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.broadcast_alert_audio ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=broadcast_alert_audio value=0 ><div class="l40 radio_text"><?cgi string=str.enable_use ?></div>
+	  <input class=radio type=radio name=broadcast_alert_audio value=1 ><div class="l40 radio_text"><?cgi string=str.disable_use ?></div>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.ring_out_channel ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=terminal_ring_channel value=0 ><div class="l40 radio_text"><?cgi string=str.enable_use ?></div>
+	  <input class=radio type=radio name=terminal_ring_channel value=1 ><div class="l40 radio_text"><?cgi string=str.disable_use ?></div>
+	</DIV>
+      </DIV>
+
+
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value=<?cgi string=str.save ?> type=submit name=b_save>&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+       </FORM>
+</CENTER>
+</BODY>
+
+<script language="javascript">
+var obj_width=10;
+var box_width=150;
+
+var points=17;
+var division=box_width/(points);
+
+function on_submit(){
+   document.forms[0].talk_volume_in.value=finger_get_value($("key_1"));
+   document.forms[0].talk_volume_out.value=finger_get_value($("key_2"));
+   document.forms[0].broadcast_volume_in.value=finger_get_value($("key_3"));
+   document.forms[0].broadcast_volume_out.value=finger_get_value($("key_4"));
+   document.forms[0].terminal_volume_ring.value=finger_get_value($("key_5"));
+
+	on_select_change_dynamic(0);
+	return true;
+}
+
+$("button_1").onmousedown=function(){
+  finger_bind_button(this, document.body, $("key_1"));
+}
+$("button_2").onmousedown=function(){
+  finger_bind_button(this, document.body, $("key_2"));
+}
+$("button_3").onmousedown=function(){
+  finger_bind_button(this, document.body, $("key_3"));
+}
+$("button_4").onmousedown=function(){
+  finger_bind_button(this, document.body, $("key_4"));
+}
+$("button_5").onmousedown=function(){
+  finger_bind_button(this, document.body, $("key_5"));
+}
+
+
+finger_set_value($("button_1"), $("key_1"), document.forms[0].talk_volume_in.value, division);
+finger_set_value($("button_2"), $("key_2"), document.forms[0].talk_volume_out.value, division);
+finger_set_value($("button_3"), $("key_3"), document.forms[0].broadcast_volume_in.value, division);
+finger_set_value($("button_4"), $("key_4"), document.forms[0].broadcast_volume_out.value, division);
+finger_set_value($("button_5"), $("key_5"), document.forms[0].terminal_volume_ring.value, division);
+
+put_radio("talk_sample_rate",<?cgi talk.sample_rate ?>0/10 );
+put_radio("talk_encode_mode",<?cgi talk.encode_mode ?>0/10);
+put_radio("talk_echo",<?cgi talk.echo ?>0/10);
+put_radio("broadcast_sample_rate",<?cgi broadcast.sample_rate ?>0/10);
+put_radio("broadcast_encode_mode",<?cgi broadcast.encode_mode ?>0/10);
+put_radio("broadcast_alert_audio",<?cgi broadcast.alert_audio ?>0/10);
+put_radio("terminal_ring_channel",<?cgi terminal.ring_channel ?>0/10);
+
+
+$("id_obj_ret").value+="?time="+(new Date()).getTime();
+$("id_obj_ret").value=urlEncode($("id_obj_ret").value);
+</script>
+
+</HTML>

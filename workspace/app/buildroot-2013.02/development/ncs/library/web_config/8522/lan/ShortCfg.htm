@@ -1,0 +1,169 @@
+﻿<HTML>
+    <HEAD>
+        <META http-equiv=Content-Language content=zh-cn>
+        <META http-equiv=Content-Type content="text/html; charset=utf-8">
+        <META http-equiv="Pragma" content="no-cache">
+        <META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+        <link rel="stylesheet"  href="/css/main.css" />
+	<script language=javascript src=/js/Common.js type=text/javascript ></script>
+    </HEAD>
+<BODY onresize="Resize(this);" onload="bd_load()">
+<iframe style="display:none" name=db onload="db_load()" ></iframe>
+        <CENTER>
+            <FORM method=GET action=/cgi-bin/response_x2i.cgi onsubmit="return onSubmit()">
+		<input type=hidden name=obj_x2i value=short_cfg.x2i >
+		<input type=hidden name=obj_sh value=response_ShortCfg.sh >
+		<input type=hidden name=obj_ret value=/cache/ShortCfg.htm id=id_obj_ret >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.alarm_options ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.alarm1_type ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=short_cfg_short_i1_alarm_mode value=0 ><div class="l40 radio_text"><?cgi string=str.short_circuit_alarm ?></div>
+	  <input class=radio type=radio name=short_cfg_short_i1_alarm_mode value=1 ><div class="l40 radio_text"><?cgi string=str.open_circuit_alarm ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.alarm2_type ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=short_cfg_short_i2_alarm_mode value=0 ><div class="l40 radio_text"><?cgi string=str.short_circuit_alarm ?></div>
+	  <input class=radio type=radio name=short_cfg_short_i2_alarm_mode value=1 ><div class="l40 radio_text"><?cgi string=str.open_circuit_alarm ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.out1_type ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=short_cfg_short_o1_normal_mode value=0 ><div class="l40 radio_text"><?cgi string=str.usual_open ?></div>
+	  <input class=radio type=radio name=short_cfg_short_o1_normal_mode value=1 ><div class="l40 radio_text"><?cgi string=str.usual_close ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.out2_type ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=short_cfg_short_o2_normal_mode value=0 ><div class="l40 radio_text"><?cgi string=str.usual_open ?></div>
+	  <input class=radio type=radio name=short_cfg_short_o2_normal_mode value=1 ><div class="l40 radio_text"><?cgi string=str.usual_close ?></div>
+	</DIV>
+      </DIV>
+       <DIV class=class_row style="display:none;">
+        <DIV class=class_col1><?cgi string=str.remove_alarm ?>:</DIV>
+        <DIV class=class_col2>
+	  <input class=radio type=radio name=short_cfg_enable_removealarm value=1 ><div class="l40 radio_text"><?cgi string=str.enable_use ?></div>
+          <input class=radio type=radio name=short_cfg_enable_removealarm value=0 ><div class="l40 radio_text"><?cgi string=str.disable_use ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="display:none;">
+        <DIV class=class_col1><?cgi string=str.remove_alarm_link ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=short_cfg_link_removealarm value=0 ><div class="l40 radio_text"><?cgi string=str.alarm1_out ?></div>
+	  <input class=radio type=radio name=short_cfg_link_removealarm value=1 ><div class="l40 radio_text"><?cgi string=str.alarm2_out ?></div>
+	  <input class=radio type=radio name=short_cfg_link_removealarm value=2 ><div class="l40 radio_text"><?cgi string=str.none ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="display:none;">
+        <DIV class=class_col1><?cgi string=str.remove_alarm_type ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=short_cfg_signal_removealarm value=0 ><div class="l40 radio_text"><?cgi string=str.level ?></div>
+	  <input class=radio type=radio name=short_cfg_signal_removealarm value=1 ><div class="l40 radio_text"><?cgi string=str.pulse ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.noise_alarm ?>:</DIV>
+        <DIV class=class_col2>
+	  <input class=radio type=radio name=short_cfg_enable_noisealarm value=1 ><div class="l40 radio_text"><?cgi string=str.enable_use ?></div>
+          <input class=radio type=radio name=short_cfg_enable_noisealarm value=0 ><div class="l40 radio_text"><?cgi string=str.disable_use ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="display:none;">
+        <DIV class=class_col1><?cgi string=str.pannel_speaker_testing ?>:</DIV>
+        <DIV class=class_col2>
+	  <input class=radio type=radio name=short_cfg_enable_speaker_test value=1 ><div class="l40 radio_text"><?cgi string=str.enable_use ?></div>
+          <input class=radio type=radio name=short_cfg_enable_speaker_test value=0 ><div class="l40 radio_text"><?cgi string=str.disable_use ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.noise_alarm_volume ?>:</DIV>
+        <DIV class=class_col2>
+            <select name=short_cfg_noise_alarm_vol class="l100" >
+            <script>select_option(0, 16, 0, "", "");</script>
+            </select>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.noise_alarm_time ?>:</DIV>
+        <DIV class=class_col2>
+        	<INPUT class="text l100" maxLength=15 id=short_cfg_noise_alarm_time name=short_cfg_noise_alarm_time value="" >&nbsp;(<?cgi string=str.seconds ?>)
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="display:none;">
+        <DIV class=class_col1><?cgi string=str.audio_play_time ?>: </DIV>
+        <DIV class=class_col2>
+        	<INPUT class="text l100" maxLength=15 id=short_cfg_audio_play_time name=short_cfg_audio_play_time value="" >&nbsp;(<?cgi string=str.milliseconds ?>)
+	</DIV>
+      </DIV>
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value=<?cgi string=str.save ?> type=submit name=b_save>&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+            </FORM>
+        </CENTER>
+        <META http-equiv="Pragma" content="no-cache">
+
+<!-- ************* help page , must add iniHelpButton() in js segment ****************** -->
+<div class="help_container">
+  <div class="help_left"><div class="help_top_space"></div><div class="help_button_0" id="help_button" ></div></div>
+  <div class="help_right_0" id="help_right">
+    <div class="help_head" ><?cgi string=str.help_message ?></div>
+    <iframe name=help class="help_text" frameBorder=0 src="" ></iframe>
+  </div>
+</div>
+<!-- ************* help page end ****************** -->
+
+    </BODY>
+<script language="javascript">
+function bd_load(){
+  window.frames["db"].document.location="/ini/sys_cfg.txt?time="+(new Date()).getTime();
+  var ret = location.toString().substring(location.toString().lastIndexOf("/")+1, location.toString().indexOf(".htm")+4);
+  window.frames["help"].document.location="/cache/Help"+ret+"?time="+(new Date()).getTime();
+  iniHelpButton();
+}
+
+function db_load(){
+  var str=window.frames["db"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var db=ini2json(str);
+
+  document.forms[0].short_cfg_noise_alarm_time.value=db.short_cfg.noise_alarm_time;
+  document.forms[0].short_cfg_audio_play_time.value=db.short_cfg.audio_play_time;
+
+  put_radio("short_cfg_short_i1_alarm_mode", parseInt(db.short_cfg.short_i1_alarm_mode) );
+  put_radio("short_cfg_short_i2_alarm_mode", parseInt(db.short_cfg.short_i2_alarm_mode) );
+  put_radio("short_cfg_short_o1_normal_mode", parseInt(db.short_cfg.short_o1_normal_mode));
+  put_radio("short_cfg_short_o2_normal_mode", parseInt(db.short_cfg.short_o2_normal_mode));
+  put_radio("short_cfg_enable_removealarm", parseInt(db.short_cfg.enable_removealarm));
+  put_radio("short_cfg_link_removealarm", parseInt(db.short_cfg.link_removealarm));
+  put_radio("short_cfg_signal_removealarm", parseInt(db.short_cfg.signal_removealarm));
+  put_radio("short_cfg_enable_noisealarm", parseInt(db.short_cfg.enable_noisealarm));
+  put_radio("short_cfg_enable_speaker_test", parseInt(db.short_cfg.enable_speaker_test));
+  
+  document.forms[0].short_cfg_noise_alarm_vol.selectedIndex = parseInt(db.short_cfg.noise_alarm_vol);
+}
+
+function onSubmit(){
+  $("id_obj_ret").value=urlEncode($("id_obj_ret").value);
+  return true;
+}
+</script>
+<HTML>

@@ -1,0 +1,1 @@
+FILE *xml_new(char *xml_file_name){

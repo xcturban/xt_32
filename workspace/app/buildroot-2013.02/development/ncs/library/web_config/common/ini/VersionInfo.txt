@@ -1,0 +1,11 @@
+[version_info]
+verInfo=0
+devName=0	
+verMajor=0
+verMinor=0
+verInner=0
+verRev=0
+verBuild=0
+verYear=0
+verMonth=0
+verDay=0

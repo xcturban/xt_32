@@ -1,0 +1,134 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv=Content-Language content=zh-cn>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META http-equiv="Pragma" content="no-cache">
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+<link rel="stylesheet" href="/css/main.css"/>
+<script language=javascript type=text/javascript src=/js/Common.js ></script>
+</HEAD>
+<BODY onresize="Resize(this);" onload="bd_load()">
+<iframe style="display:none" name=db onload="db_load()" ></iframe>
+        <CENTER>
+            <FORM method=GET action=/cgi-bin/response_x2i.cgi onsubmit="return on_submit()">
+		<input type=hidden name=obj_x2i value=alone_cfg.x2i >
+		<input type=hidden name=obj_sh value=response_AloneCfg.sh >
+		<input type=hidden name=obj_ret value=/cache/AloneCfg.htm id=id_obj_ret >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.offline_options ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.alone_talk ?></DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=alone_cfg_enable value=1 onClick="on_select_alone(0)"  ><div class="l40 radio_text"><?cgi string=str.enable_use ?></div>
+	  <input class=radio type=radio name=alone_cfg_enable value=0 onClick="on_select_alone(1)" ><div class="l40 radio_text"><?cgi string=str.disable_use ?></div>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row style="display:none;">
+        <DIV class=class_col1><?cgi string=str.talk_call_link ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=alone_cfg_talk_call_link value=1 ><div class="l40 radio_text"><?cgi string=str.alarm1_out ?></div>
+	  <input class=radio type=radio name=alone_cfg_talk_call_link value=2 ><div class="l40 radio_text"><?cgi string=str.alarm2_out ?></div>
+	  <input class=radio type=radio name=alone_cfg_talk_call_link value=0 ><div class="l40 radio_text"><?cgi string=str.none ?></div>
+	</DIV>
+      </DIV>
+      <DIV class=class_row style="display:none;">
+        <DIV class=class_col1><?cgi string=str.alarm_call_link ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=alone_cfg_alarm_call_link value=1 ><div class="l40 radio_text"><?cgi string=str.alarm1_out ?></div>
+	  <input class=radio type=radio name=alone_cfg_alarm_call_link value=2 ><div class="l40 radio_text"><?cgi string=str.alarm2_out ?></div>
+	  <input class=radio type=radio name=alone_cfg_alarm_call_link value=0 ><div class="l40 radio_text"><?cgi string=str.none ?></div>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row style="display:none;">
+        <DIV class=class_col1><?cgi string=str.talk_call ?>:</DIV>
+        <DIV class=class_col2>
+	  <INPUT class="text l100" maxLength=15 name=alone_cfg_ip_keyleft id=alone_cfg_ip_keyleft value="" >
+	  <INPUT class="text l40" maxLength=5 name=alone_cfg_port_keyleft id=alone_cfg_port_keyleft value="" >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.sos_call ?>:</DIV>
+        <DIV class=class_col2>
+	  <INPUT class="text l100" maxLength=15 name=alone_cfg_ip_keyright id=alone_cfg_ip_keyright value="" >
+	  <INPUT class="text l40" maxLength=5 name=alone_cfg_port_keyright id=alone_cfg_port_keyright value="" >
+	</DIV>
+      </DIV>
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value=<?cgi string=str.save ?> type=submit >&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+       </FORM>
+</CENTER>
+
+<!-- ************* help page , must add iniHelpButton() in js segment ****************** -->
+<div class="help_container">
+  <div class="help_left"><div class="help_top_space"></div><div class="help_button_0" id="help_button" ></div></div>
+  <div class="help_right_0" id="help_right">
+    <div class="help_head" ><?cgi string=str.help_message ?></div>
+    <iframe name=help class="help_text" frameBorder=0 src="" ></iframe>
+  </div>
+</div>
+<!-- ************* help page end ****************** -->
+
+</BODY>
+
+<script language="javascript">
+function bd_load(){
+  window.frames["db"].document.location="/ini/sys_cfg.txt?time="+(new Date()).getTime();
+  var ret = location.toString().substring(location.toString().lastIndexOf("/")+1, location.toString().indexOf(".htm")+4);
+  window.frames["help"].document.location="/cache/Help"+ret+"?time="+(new Date()).getTime();
+  iniHelpButton();
+}
+
+function db_load(){
+  var str=window.frames["db"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var db=ini2json(str);
+  document.forms[0].alone_cfg_ip_keyleft.value=db.alone_cfg.ip_keyleft;
+  document.forms[0].alone_cfg_port_keyleft.value=db.alone_cfg.port_keyleft;
+  document.forms[0].alone_cfg_ip_keyright.value=db.alone_cfg.ip_keyright;
+  document.forms[0].alone_cfg_port_keyright.value=db.alone_cfg.port_keyright;
+
+  put_radio("alone_cfg_talk_call_link", parseInt(db.alone_cfg.talk_call_link));
+  put_radio("alone_cfg_alarm_call_link", parseInt(db.alone_cfg.alarm_call_link));
+  put_radio("alone_cfg_enable",parseInt(db.alone_cfg.enable));
+  on_select_alone(get_radio("alone_cfg_enable")==0?1:0);
+}
+
+function on_submit(){
+  $("id_obj_ret").value=urlEncode($("id_obj_ret").value);
+  on_select_alone(0);
+  return true;
+}
+
+function on_select_alone(t){
+  if(t==0){
+	/* display */
+	$("alone_cfg_ip_keyleft").disabled=false;
+	$("alone_cfg_port_keyleft").disabled=false;
+	$("alone_cfg_ip_keyright").disabled=false;
+	$("alone_cfg_port_keyright").disabled=false;
+  }else{
+	$("alone_cfg_ip_keyleft").disabled=true;
+	$("alone_cfg_port_keyleft").disabled=true;
+	$("alone_cfg_ip_keyright").disabled=true;
+	$("alone_cfg_port_keyright").disabled=true;
+  }
+}
+</script>
+</HTML>

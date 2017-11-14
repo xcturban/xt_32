@@ -1,0 +1,91 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv=Content-Language content=zh-cn>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META http-equiv="Pragma" content="no-cache">
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+<link rel="stylesheet" href="/css/main.css"/>
+<script language=javascript type=text/javascript src=/js/Common.js ></script>
+</HEAD>
+<BODY onresize="Resize(this);" onload="bd_load()">
+<iframe style="display:none" name=db onload="db_load()" ></iframe>
+        <CENTER>
+            <FORM method=GET action=/cgi-bin/response_x2i.cgi onsubmit="return on_submit()">
+		<input type=hidden name=obj_x2i value=monite_cfg.x2i >
+		<input type=hidden name=obj_sh value=response_MoniteCfg.sh >
+		<input type=hidden name=obj_ret value=/cache/MoniteCfg.htm id=id_obj_ret >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.monite_options ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.monite_in_volume ?>:</DIV>
+        <DIV class=class_col2>
+            <select name=monite_cfg_volume_in class="l100" >
+            <script>select_option(0, 16, 0, "", "");</script>
+            </select>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.in_channel ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=monite_cfg_mode_in value=0 ><div class="l40 radio_text"><?cgi string=str.mic_in ?></div>
+	  <input class=radio type=radio name=monite_cfg_mode_in value=1 ><div class="l40 radio_text"><?cgi string=str.line_in ?></div>
+	</DIV>
+      </DIV>
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value=<?cgi string=str.save ?> type=submit >&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+       </FORM>
+</CENTER>
+
+<!-- ************* help page , must add iniHelpButton() in js segment ****************** -->
+<div class="help_container">
+  <div class="help_left"><div class="help_top_space"></div><div class="help_button_0" id="help_button" ></div></div>
+  <div class="help_right_0" id="help_right">
+    <div class="help_head" ><?cgi string=str.help_message ?></div>
+    <iframe name=help class="help_text" frameBorder=0 src="" ></iframe>
+  </div>
+</div>
+<!-- ************* help page end ****************** -->
+
+</BODY>
+
+<script language="javascript">
+function bd_load(){
+  window.frames["db"].document.location="/ini/sys_cfg.txt?time="+(new Date()).getTime();
+  var ret = location.toString().substring(location.toString().lastIndexOf("/")+1, location.toString().indexOf(".htm")+4);
+  window.frames["help"].document.location="/cache/Help"+ret+"?time="+(new Date()).getTime();
+  iniHelpButton();
+}
+
+function db_load(){
+  var str=window.frames["db"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var db=ini2json(str);
+
+  document.forms[0].monite_cfg_volume_in.selectedIndex = parseInt(db.monite_cfg.volume_in);
+
+  put_radio("monite_cfg_mode_in", parseInt(db.monite_cfg.mode_in) );
+}
+
+function on_submit(){
+  $("id_obj_ret").value=urlEncode($("id_obj_ret").value);
+  return true;
+}
+</script>
+</HTML>

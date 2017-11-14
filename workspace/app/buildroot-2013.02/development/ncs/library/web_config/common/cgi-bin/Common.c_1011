@@ -1,0 +1,334 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <iconv.h>
+#include "Common.h"
+
+char temp_str[100]; /* used for get_value */
+
+int get_value(char *value, char *argv, char *argv_sub, char div_char){
+	int i;
+	int j;
+	int k;
+	j=0;
+	char temp[50];
+	for(i=0;i<strlen(argv);i++){
+		for(k=0;k<strlen(argv_sub);k++){
+			temp[k]=argv[i+k];
+		}
+		temp[k]=0;	
+		if(!strcmp(temp,argv_sub)){
+			if(i==0 || argv[i-1]==' ' || argv[i-1]==div_char){
+				if(argv[i+strlen(argv_sub)]=='='){
+					i+=strlen(argv_sub)+1;
+					do{
+						value[j]=argv[i];
+						j++;
+						i++;
+						if(i>strlen(argv)){
+							break;
+						}
+					}while(argv[i-1]!=div_char && argv[i-1]!=0);
+					value[j-1]=0;
+					return 0;
+				}
+			
+			}
+		}
+	}
+	return -1;
+}
+
+int get_value_from_xml(char *value, char *file_name_xml, char *argv){
+	FILE *fp; int temp;int temp_begin;char arg_name[50];char arg_name_neg[50]; char temp_name[50];int i;int j;
+	char *arg_value=value;
+
+
+	if(strlen(argv)>45){
+		printf("the argv is too long :error!\n\r");
+		return -1; 
+	}	
+	arg_name[0]='<';
+	arg_name_neg[0]='<';
+	arg_name_neg[1]='/';
+	for(i=1;i<strlen(argv)+1;i++){
+		arg_name[i]=argv[i-1];
+		arg_name_neg[i+1]=argv[i-1];
+	}
+	arg_name[i]='>';
+	arg_name_neg[i+1]='>';
+	arg_name[i+1]=0;
+	arg_name_neg[i+2]=0;
+	if((fp=fopen(file_name_xml,"r"))==NULL){
+		printf("file open error!\n\r");
+		return -1;
+	}
+	temp=0;
+	while(!feof(fp)){
+		fseek(fp,temp,SEEK_SET);
+		fgets(temp_name,strlen(arg_name)+1,fp);
+		if(!strcmp(temp_name,arg_name)){
+			temp+=strlen(arg_name);
+			j=0;
+			do{
+				fseek(fp,temp,SEEK_SET);
+				fgets(&arg_value[j],strlen(arg_name_neg)+1,fp);
+				j++;
+				temp++;
+				if(j==48){
+					break;
+				}
+			}while(strcmp(&arg_value[j-1],arg_name_neg)&&(!feof(fp)));
+			if(j<48){
+				fclose(fp);
+				arg_value[j-1]=0;
+				return 0; /* find it so return means successful... */
+			}else{
+				fclose(fp);
+				arg_value[0]=0;
+				return -1; /* you have two choice, 1 for pass, the other tell error. */
+			}
+		}
+		temp++;	
+	}
+	fclose(fp);
+	arg_value[0]=0;
+	return -1; /* find none of yous */
+}
+
+int cgi_to_html(char *file_name_obj, char *file_name_src, char *argv_table, char div_char){
+	char arg_name[50];
+	char arg_val[50];
+	int i,j,k,m;	
+	FILE *fp;
+	FILE *fp_htm;
+	int temp;
+	int begin_temp;
+	int end_temp;
+	int temp_htm;
+	char str[100];
+
+	if((fp=fopen(file_name_src,"rb"))==NULL){
+		printf("file open error!\n\r");
+		return -1;
+	}
+	if((fp_htm=fopen(file_name_obj,"wb"))==NULL){
+		printf("file temp_temp open error!\n\r");
+		return -1;
+	}
+
+	temp=0;
+	temp_htm=0;
+	while(!feof(fp)){
+		fseek(fp,temp,SEEK_SET);
+		fgets(arg_name,strlen("<?cgi ")+1,fp);
+		if(!strcmp(arg_name,"<?cgi ")){
+			begin_temp=temp;
+			temp+=strlen("<?cgi ");
+			i=-1;
+			do{
+				i+=1;
+				fseek(fp,temp+i,SEEK_SET);
+				fgets(&arg_name[i],strlen("?>")+1,fp);
+			}while(strcmp(&arg_name[i],"?>"));
+			arg_name[i-1]=0; /* note the space followed the ?> */
+			end_temp=temp+i-2;
+		//	printf("*****************************\n\r");
+			if(get_value(temp_str, argv_table, arg_name, div_char)<0){
+				temp_str[0]=0;
+			}
+			fwrite(temp_str,sizeof(char),strlen(temp_str),fp_htm);
+		//	sprintf(str, "the temp_str: %s str argv[2]: %s str arg_name: %s \n\r",temp_str,argv[2],arg_name);
+		//	printf(str);
+		//	printf("****************************\n\r");	
+			temp=end_temp+4-1; /* note after the if block there is a temp++ */
+		}else{
+			fputc(arg_name[0],fp_htm);
+		}
+		temp++;
+	}
+
+	fclose(fp);
+	fclose(fp_htm);
+
+	return 0;
+
+}
+
+int cgi_to_browser(char *file_name_src, char *argv_table, char div_char){
+	char arg_name[50];
+	char arg_val[50];
+	int i,j,k,m;	
+	FILE *fp;
+	FILE *fp_htm;
+	int temp;
+	int begin_temp;
+	int end_temp;
+	int temp_htm;
+	char str[100];
+
+	if((fp=fopen(file_name_src,"r"))==NULL){
+		printf("file open error!\n\r");
+		return -1;
+	}
+
+	temp=0;
+	temp_htm=0;
+	while(!feof(fp)){
+		fseek(fp,temp,SEEK_SET);
+		fgets(arg_name,strlen("<?cgi ")+1,fp);
+		if(!strcmp(arg_name,"<?cgi ")){
+			begin_temp=temp;
+			temp+=strlen("<?cgi ");
+			i=-1;
+			do{
+				i+=1;
+				fseek(fp,temp+i,SEEK_SET);
+				fgets(&arg_name[i],strlen("?>")+1,fp);
+			}while(strcmp(&arg_name[i],"?>"));
+			arg_name[i-1]=0;
+			end_temp=temp+i+1;
+		//	printf("*****************************\n\r");
+			if(get_value(temp_str, argv_table, arg_name, div_char)<0){
+				temp_str[0]=0;
+			}
+			//write(temp_str,sizeof(char),strlen(temp_str));
+			printf(temp_str);
+		//	sprintf(str, "the temp_str: %s str argv[2]: %s str arg_name: %s \n\r",temp_str,argv[2],arg_name);
+		//	printf(str);
+		//	printf("****************************\n\r");	
+			temp=end_temp+1;
+		}else{
+			//putc(arg_name[0]);
+			arg_name[1]=0;
+			printf(arg_name);
+		}
+		temp++;
+	}
+
+	fclose(fp);
+
+	return 0;
+
+}
+
+int cgi_to_browser_by_xml(char *file_name_src, char *file_name_xml){
+	char arg_name[50];
+	char arg_val[50];
+	int i,j,k,m;	
+	FILE *fp;
+	FILE *fp_htm;
+	int temp;
+	int begin_temp;
+	int end_temp;
+	int temp_htm;
+	char str[100];
+
+	if((fp=fopen(file_name_src,"r"))==NULL){
+		printf("file open error!\n\r");
+		return -1;
+	}
+
+	temp=0;
+	temp_htm=0;
+	while(!feof(fp)){
+		fseek(fp,temp,SEEK_SET);
+		fgets(arg_name,strlen("<?cgi ")+1,fp);
+		if(!strcmp(arg_name,"<?cgi ")){
+			begin_temp=temp;
+			temp+=strlen("<?cgi ");
+			i=-1;
+			do{
+				i+=1;
+				fseek(fp,temp+i,SEEK_SET);
+				fgets(&arg_name[i],strlen("?>")+1,fp);
+			}while(strcmp(&arg_name[i],"?>"));
+			arg_name[i-1]=0;
+			end_temp=temp+i+1;
+		//	printf("*****************************\n\r");
+			if(get_value_from_xml(temp_str, file_name_xml, arg_name)<0){
+				temp_str[0]=0;
+			}
+			//write(temp_str,sizeof(char),strlen(temp_str));
+			printf(temp_str);
+		//	sprintf(str, "the temp_str: %s str argv[2]: %s str arg_name: %s \n\r",temp_str,argv[2],arg_name);
+		//	printf(str);
+		//	printf("****************************\n\r");	
+			temp=end_temp;
+		}else{
+			//putc(arg_name[0]);
+			arg_name[1]=0;
+			printf(arg_name);
+		}
+		temp++;
+	}
+
+	fclose(fp);
+
+	return 0;
+
+}
+
+int linuxSystem(char *cmdFile){
+	FILE *fp;
+	char cmdStr[512];
+	int i;
+	if((fp=fopen(cmdFile,"r"))==NULL){
+		printf("file open error!");
+		return -1;
+	}
+
+	i=0;
+	while((cmdStr[i]=fgetc(fp))!=EOF){
+		if(cmdStr[i]=='\n'){
+			cmdStr[i]=0;
+			system(cmdStr);
+			i=-1;
+		}
+		i++;
+	}
+
+	return 0;	
+}
+
+int gb23122utf8(char *outstr, char *instr){
+	int ret;
+	int inleft;
+	int outleft;
+	iconv_t cd;
+	
+	ret=0;
+	inleft=strlen(instr);
+	outleft=inleft*2; /* dont know why */
+	cd = iconv_open("GB2312","GB2312");
+	if(0==cd){
+		return -2;/* it means iconv_open error */
+	}
+	ret = iconv(cd, &instr, &inleft, &outstr, &outleft);
+	iconv_close(cd);
+	return ret;
+}
+
+/*
+void main(){
+	LinuxSystem("test.txt");
+}
+
+void main(){
+	cgi_to_html("./update_test.htm","../c2h/HardUpdateState.c2h","update_state=ok&update_time=123456",'&');
+}
+
+void main(){
+	cgi_to_html("../net_cfg.xml","../net_cfg.c2h","host_ip=18.18.18.18&host_mac=10.10.10.10.10.10.10",'&');
+}
+
+void main(){
+	char str[50];
+	char str2[100];
+	get_value_from_xml(str, "../net_cfg.xml", "host_ip");
+	sprintf(str2,"the value:%s\n\r",str);
+	printf(str2);
+	
+}
+*/
+

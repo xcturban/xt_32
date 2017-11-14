@@ -1,0 +1,103 @@
+﻿<HTML>
+    <HEAD>
+        <META http-equiv=Content-Language content=zh-cn>
+        <META http-equiv=Content-Type content="text/html; charset=utf-8">
+        <META http-equiv="Pragma" content="no-cache">
+        <META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+	<link rel="stylesheet" href="/css/main.css"/>
+	<script language=javascript src=/js/Common.js type=text/javascript ></script>
+    </HEAD>
+<BODY onresize="Resize(this);" onload="bd_load()">
+<iframe style="display:none" name=db onload="db_load()" ></iframe>
+        <CENTER>
+            <FORM method=GET action=/cgi-bin/response_WebCfg.cgi onsubmit="return on_submit();">
+		<input type=hidden name=obj_x2i value=web_cfg.x2i >
+		<input type=hidden name=obj_sh value=response_WebCfg.sh >
+		<input type=hidden name=obj_ret value=/cache/WebCfgCheck.htm id=id_obj_ret >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.web_password_settings ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+      <DIV class=class_row style="text-align:left;">
+        <?cgi string=str.change_username_password_this_page_dont_length ?>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.old_user ?>: </DIV>
+        <DIV class=class_col2>
+		<INPUT type=text class="text l100" maxLength=15 size=16 name=web_username_old >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.old_key ?>: </DIV>
+        <DIV class=class_col2>
+ 		<INPUT type=password class="text l100" maxLength=15 size=16 name=web_password_old >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.new_user ?>: </DIV>
+        <DIV class=class_col2>
+ 		<INPUT type=text class="text l100" maxLength=15 size=16 name=web_cfg_username id=web_cfg_username>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.new_key ?>:</DIV>
+        <DIV class=class_col2>
+		<INPUT type=password class="text l100" maxLength=15 size=16 id=id_password_1 name=web_cfg_password >
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.key_confirm ?>:</DIV>
+        <DIV class=class_col2>
+		<INPUT type=password class="text l100" maxLength=15 size=16 id=id_password_2 >
+	</DIV>
+      </DIV>
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value="<?cgi string=str.save ?>" type=submit name=b_save>&nbsp; 
+      <INPUT class=button value="<?cgi string=str.cancel ?>" type=reset >&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+            </FORM>
+        </CENTER>
+    </BODY>
+<script>
+function bd_load(){
+  window.frames["db"].document.location="/ini/sys_cfg.txt?time="+(new Date()).getTime();
+}
+
+function db_load(){
+  var str=window.frames["db"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var db=ini2json(str);
+}
+
+function on_submit(){
+  var ret=true;
+  if($("web_cfg_username").value == "") {
+	alert("<?cgi string=str.new_user ?>,<?cgi string=str.nulliswrong ?>");
+	return false;
+  }
+  if($("id_password_1").value == "") {
+	alert("<?cgi string=str.new_key ?>,<?cgi string=str.nulliswrong ?>");
+	return false;
+  }
+  if($("id_password_1").value!=$("id_password_2").value){
+    alert("Error. Password inkey twice not the same!");
+    return false;
+  }
+  $("id_obj_ret").value=urlEncode($("id_obj_ret").value);
+  return true;
+}
+
+</script>
+</HTML>

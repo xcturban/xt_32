@@ -1,0 +1,148 @@
+﻿<HTML>
+    <HEAD>
+        <META http-equiv=Content-Language content=zh-cn>
+        <META http-equiv=Content-Type content="text/html; charset=utf-8">
+        <META http-equiv="Pragma" content="no-cache">
+        <META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+        <LINK rel=stylesheet href=CSS4Main.htm>
+	<link href="../css/main.css" rel="stylesheet"/>
+<style>
+#id_iframe_scroller{display:none; }
+#id_scroller_outline{width:200px; height:15px; background-color:white; border:2px solid blue; display:none; }
+#id_scroller_inline{width:20px; height:13px; background-color:gray;}
+#id_show_message{width:100px; height:20px; float:left;}
+.class_list{width:500px; }
+
+</style>
+    </HEAD>
+    <BODY onresize="Resize(this);">
+        <CENTER>
+	    <iframe id=id_iframe_scroller name=name_iframe_scroller src=HardUpdateState.cgi ></iframe>
+            <FORM enctype=multipart/form-data method=POST action=/cgi-bin/response_UploadFile.cgi target=name_iframe_scroller >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.update_firmware ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+      <DIV class=class_row style="text-align:left;">
+        <?cgi string=str.you_can_update_your_device ?>。<?cgi string=str.make_sure_you_power_and_net ?>。
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.firmware_version ?>: </DIV>
+        <DIV class=class_col2>
+<script>
+var f_verInfo='<?cgi version_info.verInfo ?>';
+var f_devName='<?cgi version_info.devName ?>';	
+var f_verMajor='<?cgi version_info.verMajor ?>';
+var f_verMinor='<?cgi version_info.verMinor ?>';
+var f_verInner='<?cgi version_info.verInner ?>';
+var f_verRev='<?cgi version_info.verRev ?>';
+var f_verBuild='<?cgi version_info.verBuild ?>';
+var f_verYear='<?cgi version_info.verYear ?>';
+var f_verMonth='<?cgi version_info.verMonth ?>';
+var f_verDay='<?cgi version_info.verDay ?>';
+
+function left0(a){
+  ret=a.toString();
+  if(ret.length<2){
+    ret='0'+ret;
+  }
+  return ret;
+}
+
+document.write(f_verMajor+'.'+f_verMinor+'.'+f_verInner+'_'+f_verYear+left0(f_verMonth)+left0(f_verDay)+' Build '+f_verBuild);
+</script>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.path ?>: </DIV>
+        <DIV class=class_col2>
+		<input class="text" style="width:200px;"  type=file name=HardUpdate />
+	</DIV>
+      </DIV>
+
+          <DIV class=class_row style="text-align:left;">
+        <INPUT class=button value="<?cgi string=str.begin_update ?>" type=submit name=b_save>&nbsp; 
+        <div id=id_show_message style="float:left;"> </div>
+      </DIV>
+      <DIV class=class_row style="text-align:left;">
+	<?cgi string=str.note ?>：<br>
+	1、<?cgi string=str.dont_poweroff_while_update ?>，<?cgi string=str.or_else_make_device_error ?>。<br>
+        2、<?cgi string=str.update_tasts_about_5_minutes ?>，<?cgi string=str.after_that_device_will_reboot ?>。 
+      </DIV>
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+	<div id=id_dialog >
+		<center>
+			<div id=id_upload_state >	
+			</div>
+		</center>
+	</div>
+
+
+    </BODY>
+<script language=javascript >
+var idtime0;
+var old_update_time;
+function $(id){
+	return document.getElementById(id);
+}
+
+function showMessage(message){
+	$("id_show_message").innerHTML=message;
+}
+
+function getTextByTag(tagName,str){
+	str=str.toLowerCase();
+	str=str.substr(str.indexOf("<"+tagName+">")+("<"+tagName+">").length);
+	str=str.substr(0,str.indexOf("</"+tagName+">"));
+	return str;
+}
+
+function getOldUpdateTime(){
+	str=document.frames["id_iframe_scroller"].document.body.innerHTML;
+	old_update_time=getTextByTag("update_time",str);
+}
+
+function getIframe(){
+	str=document.frames["id_iframe_scroller"].document.body.innerHTML;
+	if(getTextByTag("upload_state",str).indexOf("ok")>-1){
+		document.frames["id_iframe_scroller"].location="HardUpdateState.cgi";
+		//alert("upload ok");
+		showMessage("upload ok");
+	}else if(getTextByTag("update_state",str).indexOf("ok")>-1){
+		if(getTextByTag("update_time",str).indexOf(old_update_time)>-1){
+			randtemp=new Date().getTime();
+			document.frames["id_iframe_scroller"].location="HardUpdateState.cgi?randtemp="+randtemp;
+			//alert("updating...");
+			showMessage("updating ... ");
+		}else{
+			//alert("update ok");
+			showMessage("update ok");
+			clr();
+		}	
+	}else{
+	//	alert("uploading ...");
+		showMessage("uploading ... ");
+	}
+}
+
+function set(){
+	idtime0=setInterval("getIframe()",500);
+}
+function clr(){
+	clearInterval(idtime0);
+}
+
+document.frames["id_iframe_scroller"].onload=function(){
+	getOldUpdateTime();
+}
+</script>
+</HTML>
+

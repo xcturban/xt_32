@@ -1,0 +1,134 @@
+﻿<HTML>
+    <HEAD>
+        <META http-equiv=Content-Language content=zh-cn>
+        <META http-equiv=Content-Type content="text/html; charset=utf-8">
+        <META http-equiv="Pragma" content="no-cache">
+        <META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+        <link rel="stylesheet"  href="/css/main.css" />
+	<script language=javascript src=/js/Common.js type=text/javascript ></script>
+    </HEAD>
+<BODY onresize="Resize(this);" onload="bd_load()">
+<iframe style="display:none" name=db onload="db_load()" ></iframe>
+        <CENTER>
+            <FORM method=GET action=/cgi-bin/response_x2i.cgi onsubmit="return onSubmit()">
+		<input type=hidden name=obj_x2i value=aux_cfg.x2i >
+		<input type=hidden name=obj_sh value=response_AuxCfg.sh >
+		<input type=hidden name=obj_ret value=/cache/AuxCfg.htm id=id_obj_ret >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.aux_options ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+	
+	<DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.screen_save_time ?>:</DIV>
+        <DIV class=class_col2>
+            <select name=aux_cfg_screensave_time class="l100" >
+				<option value=0><?cgi string=str.none ?></option>
+				<option value=1>1</option>
+				<option value=2>2</option>
+				<option value=3>3</option>
+				<option value=4>4</option>
+				<option value=5>5</option>
+				<option value=6>10</option>
+				<option value=7>15</option>
+				<option value=8>20</option>
+				<option value=9>25</option>
+				<option value=10>30</option>
+            </select>&nbsp;<?cgi string=str.min ?>
+		</DIV>
+      </DIV>
+	  
+    <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.lcdoff_time ?>:</DIV>
+        <DIV class=class_col2>
+            <select name=aux_cfg_lcdoff_time class="l100" >
+				<option value=0><?cgi string=str.none ?></option>
+				<option value=1>1</option>
+				<option value=2>2</option>
+				<option value=3>3</option>
+				<option value=4>4</option>
+				<option value=5>5</option>
+				<option value=6>10</option>
+				<option value=7>15</option>
+				<option value=8>20</option>
+				<option value=9>25</option>
+				<option value=10>30</option>
+            </select>&nbsp;<?cgi string=str.min ?>
+		</DIV>
+     </DIV>
+	 <!-- // 注释掉显示列表选项
+	 <DIV class=class_row>
+		<DIV class=class_col1><?cgi string=str.callmode ?>:</DIV>
+		<DIV class=class_col2>
+		<select name=aux_cfg_call_mode id=aux_cfg_call_mode class="l100">';
+			<option value=0 ><?cgi string=str.onecall ?>
+			<option value=1 ><?cgi string=str.keycall ?>
+			<option value=2 ><?cgi string=str.listcall ?>
+		</select>
+		</DIV>
+	</DIV>
+
+	<DIV class=class_row >
+        <DIV class=class_col1><?cgi string=str.unlock_passwd ?>:</DIV>
+        <DIV class=class_col2>
+		<INPUT class="text l100" maxLength=15 name= aux_cfg_unlock_passwd id=aux_cfg_unlock_passwd value="" >
+		</DIV>
+    </DIV>
+	-->  
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value=<?cgi string=str.save ?> type=submit name=b_save>&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+            </FORM>
+        </CENTER>
+        <META http-equiv="Pragma" content="no-cache">
+
+<!-- ************* help page , must add iniHelpButton() in js segment ****************** -->
+<div class="help_container">
+  <div class="help_left"><div class="help_top_space"></div><div class="help_button_0" id="help_button" ></div></div>
+  <div class="help_right_0" id="help_right">
+    <div class="help_head" ><?cgi string=str.help_message ?></div>
+    <iframe name=help class="help_text" frameBorder=0 src="" ></iframe>
+  </div>
+</div>
+<!-- ************* help page end ****************** -->
+
+    </BODY>
+<script language="javascript">
+function bd_load(){
+  window.frames["db"].document.location="/ini/sys_cfg.txt?time="+(new Date()).getTime();
+  var ret = location.toString().substring(location.toString().lastIndexOf("/")+1, location.toString().indexOf(".htm")+4);
+  window.frames["help"].document.location="/cache/Help"+ret+"?time="+(new Date()).getTime();
+  iniHelpButton();
+}
+
+function db_load(){
+  var str=window.frames["db"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var db=ini2json(str);
+
+  document.forms[0].aux_cfg_screensave_time.selectedIndex = parseInt(db.aux_cfg.screensave_time);
+  document.forms[0].aux_cfg_lcdoff_time.selectedIndex = parseInt(db.aux_cfg.lcdoff_time);
+  /*
+  document.forms[0].aux_cfg_unlock_passwd.value=db.aux_cfg.unlock_passwd;
+  document.forms[0].aux_cfg_call_mode.selectedIndex = parseInt(db.aux_cfg.call_mode);
+  */
+}
+
+function onSubmit(){
+  $("id_obj_ret").value=urlEncode($("id_obj_ret").value);
+  return true;
+}
+</script>
+<HTML>

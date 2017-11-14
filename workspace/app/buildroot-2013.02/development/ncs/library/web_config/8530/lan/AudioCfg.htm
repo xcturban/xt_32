@@ -1,0 +1,176 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv=Content-Language content=zh-cn>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META http-equiv="Pragma" content="no-cache">
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+<link rel="stylesheet" href="/css/main.css"/>
+<script language=javascript type=text/javascript src="/js/Common.js" ></script>
+</HEAD>
+<BODY onresize="Resize(this);" onload="bd_load()">
+<iframe style="display:none" name=db onload="db_load()" ></iframe>
+        <CENTER>
+            <FORM method=GET action=/cgi-bin/response_x2i.cgi onsubmit="return on_submit()">
+		<input type=hidden name=obj_x2i value=audio_cfg.x2i >
+		<input type=hidden name=obj_sh value=response_AudioCfg.sh >
+		<input type=hidden name=obj_ret value=/cache/AudioCfg.htm id=id_obj_ret >
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="../images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.audio_options ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talk_in_volume ?>:</DIV>
+        <DIV class=class_col2>
+            <select name=talk_cfg_volume_in class="l100" >
+            <script>select_option(0, 16, 0, "", "");</script>
+            </select>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talk_out_volume ?>:</DIV>
+        <DIV class=class_col2>
+            <select name=talk_cfg_volume_out class="l100" >
+            <script>select_option(0, 16, 0, "", "");</script>
+            </select>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.broadcast_in_volume ?>:</DIV>
+        <DIV class=class_col2>
+            <select name=broadcast_cfg_volume_in class="l100" >
+            <script>select_option(0, 16, 0, "", "");</script>
+            </select>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.broadcast_out_volume ?>:</DIV>
+        <DIV class=class_col2>
+            <select name=broadcast_cfg_volume_out class="l100" >
+            <script>select_option(0, 16, 0, "", "");</script>
+            </select>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.volume_ring ?>:</DIV>
+        <DIV class=class_col2>
+            <select name=terminal_volume_ring class="l100" >
+            <script>select_option(0, 16, 0, "", "");</script>
+            </select>
+	</DIV>
+      </DIV>
+	  
+ 
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.talk_encode_mode ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=talk_cfg_is_pcm value=0 ><div class="l40 radio_text">PCM</div>
+	  <input class=radio type=radio name=talk_cfg_is_pcm value=1 ><div class="l40 radio_text">ADPCM</div>
+	</DIV>
+      </DIV>
+
+    
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.broadcast_encode_mode ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=broadcast_cfg_is_pcm value=0 ><div class="l40 radio_text">PCM</div>
+	  <input class=radio type=radio name=broadcast_cfg_is_pcm value=1 ><div class="l40 radio_text">ADPCM</div>
+	</DIV>
+      </DIV>
+	  
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.ptt_ctrl ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=talk_cfg_ptt_ctrl_method value=0 ><div class="l40 radio_text"><?cgi string=str.click_trigger ?></div>
+		  <input class=radio type=radio name=talk_cfg_ptt_ctrl_method value=1 ><div class="l40 radio_text"><?cgi string=str.press_trigger ?></div>
+		</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.conference_talk ?>:</DIV>
+        <DIV class=class_col2>
+		  <input class=radio type=radio name=talk_cfg_conference_talk value=1 ><div class="l40 radio_text"><?cgi string=str.enable_use ?></div>
+          <input class=radio type=radio name=talk_cfg_conference_talk value=0 ><div class="l40 radio_text"><?cgi string=str.disable_use ?></div>
+		</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.broadcast_alert_audio ?>:</DIV>
+        <DIV class=class_col2>
+          <input class=radio type=radio name=broadcast_cfg_alert_audio value=0 ><div class="l40 radio_text"><?cgi string=str.enable_use ?></div>
+	  <input class=radio type=radio name=broadcast_cfg_alert_audio value=1 ><div class="l40 radio_text"><?cgi string=str.disable_use ?></div>
+	</DIV>
+      </DIV>
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value=<?cgi string=str.save ?> type=submit name=b_save>&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+       </FORM>
+</CENTER>
+
+
+<!-- ************* help page , must add iniHelpButton() in js segment ****************** -->
+<div class="help_container">
+  <div class="help_left"><div class="help_top_space"></div><div class="help_button_0" id="help_button" ></div></div>
+  <div class="help_right_0" id="help_right">
+    <div class="help_head" ><?cgi string=str.help_message ?></div>
+<iframe name=help class="help_text" frameBorder=0 src="" ></iframe>
+  </div>
+</div>
+<!-- ************* help page end ****************** -->
+
+</BODY>
+
+<script language="javascript">
+function bd_load(){
+  window.frames["db"].document.location="/ini/sys_cfg.txt?time="+(new Date()).getTime();
+  var ret = location.toString().substring(location.toString().lastIndexOf("/")+1, location.toString().indexOf(".htm")+4);
+  window.frames["help"].document.location="/cache/Help"+ret+"?time="+(new Date()).getTime();
+  iniHelpButton();
+}
+
+function db_load(){
+  var str=window.frames["db"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var db=ini2json(str);
+
+  document.forms[0].talk_cfg_volume_in.selectedIndex = parseInt(db.talk_cfg.volume_in);
+  document.forms[0].talk_cfg_volume_out.selectedIndex = parseInt(db.talk_cfg.volume_out);
+  document.forms[0].broadcast_cfg_volume_in.selectedIndex = parseInt(db.broadcast_cfg.volume_in);
+  document.forms[0].broadcast_cfg_volume_out.selectedIndex = parseInt(db.broadcast_cfg.volume_out);
+  document.forms[0].terminal_volume_ring.selectedIndex = parseInt(db.terminal.volume_ring);
+  
+  put_radio("talk_cfg_sample", parseInt(db.talk_cfg.sample));
+  put_radio("talk_cfg_is_pcm", parseInt(db.talk_cfg.is_pcm));
+  put_radio("talk_cfg_echo", parseInt(db.talk_cfg.echo));
+  put_radio("broadcast_cfg_sample", parseInt(db.broadcast_cfg.sample));
+  put_radio("broadcast_cfg_is_pcm", parseInt(db.broadcast_cfg.is_pcm));
+  put_radio("broadcast_cfg_alert_audio", parseInt(db.broadcast_cfg.alert_audio));
+  put_radio("talk_cfg_ptt_ctrl_method", parseInt(db.talk_cfg.ptt_ctrl_method));
+  put_radio("talk_cfg_conference_talk", parseInt(db.talk_cfg.conference_talk));
+}
+
+function on_submit(){
+  $("id_obj_ret").value=urlEncode($("id_obj_ret").value);
+  return true;
+}
+</script>
+
+</HTML>

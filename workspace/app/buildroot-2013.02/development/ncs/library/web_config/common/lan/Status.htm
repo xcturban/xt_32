@@ -1,0 +1,128 @@
+﻿<HTML>
+    <HEAD>
+        <META http-equiv=Content-Language content=zh-cn>
+        <META http-equiv=Content-Type content="text/html; charset=utf-8">
+        <META http-equiv="Pragma" content="no-cache">
+        <META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+	<link href="/css/main.css" rel="stylesheet"/>
+	<script language=javascript type=text/javascript src=/js/Common.js ></script>
+    </HEAD>
+<BODY onresize="Resize(this);" onload="bd_load()">
+<iframe style="display:none" name=db onload="db_load()" ></iframe>
+        <CENTER>
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.run_status ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.terminal_id ?>:</DIV>
+        <DIV class=class_col2>
+                                <DIV id=terminal_id></DIV>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.ip_address ?>: </DIV>
+        <DIV class=class_col2>
+                                <DIV id=terminal_ip ></DIV>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.mask ?>: </DIV>
+        <DIV class=class_col2>
+                                <DIV id=terminal_mask></DIV>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.default_gate ?>: </DIV>
+        <DIV class=class_col2>
+                                <DIV id=terminal_gate></DIV>
+	</DIV>
+      </DIV>
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.dns ?>:</DIV>
+        <DIV class=class_col2>
+                                <DIV id=terminal_dns1></DIV>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row>
+        <DIV class=class_col1><?cgi string=str.mac ?>:</DIV>
+        <DIV class=class_col2>
+                                <DIV id=terminal_mac></DIV>
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row style="display:none">
+        <DIV class=class_col1><?cgi string=str.running_time ?>:</DIV>
+        <DIV class=class_col2>
+                                <DIV id=terminal_running_time style="color:red;"></DIV>
+	</DIV>
+      </DIV>
+  </div><!-- div_main -->
+
+  <!--
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value="<?cgi string=str.reflash ?>" type=button onclick="bd_load()" >&nbsp;
+    </DIV>
+  </DIV>
+  -->
+  
+  </div><!-- div_main_edge -->
+</DIV>
+        </CENTER>
+    </BODY>
+<script>
+var seconds=0;
+
+function toHex(num) {
+    return num < 16 ? "0" + num.toString(16).toUpperCase() : num.toString(16).toUpperCase();
+}
+
+function bd_load(){
+  window.frames["db"].document.location="/ini/sys_cfg.txt?time="+(new Date()).getTime();
+}
+
+function db_load(){
+  var str=window.frames["db"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var db=ini2json(str);
+
+  $("terminal_id").innerHTML=db.terminal.id;
+  $("terminal_ip").innerHTML=db.terminal.ip;
+  $("terminal_mask").innerHTML=db.terminal.mask;
+  $("terminal_gate").innerHTML=db.terminal.gate;
+  $("terminal_dns1").innerHTML=db.terminal.dns1;
+  $("terminal_mac").innerHTML=db.terminal.mac_addr;
+
+  if(seconds==0 && parseInt(db.terminal.running_time) != 0){
+    seconds = db.terminal.running_time;
+    running_time();
+  }
+}
+
+function dis_time(s){
+  var days=parseInt(s/86400);
+  s-=days*86400;
+  var hours=parseInt(s/3600);
+  s-=hours*3600;
+  var minutes=parseInt(s/60);
+  s-=minutes*60;
+  $("terminal_running_time").innerText = days+"<?cgi string=str.days ?>-"+hours+":"+minutes+":"+s;
+}
+
+function running_time(){
+  dis_time(seconds++);
+}
+
+setInterval("running_time()", 1000);
+setInterval("bd_load()", 5000);
+</script>
+</HTML>

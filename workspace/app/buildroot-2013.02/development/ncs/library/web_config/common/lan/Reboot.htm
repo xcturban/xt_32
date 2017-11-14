@@ -1,0 +1,99 @@
+﻿<HTML>
+    <HEAD>
+        <META http-equiv=Content-Language content=zh-cn>
+        <META http-equiv=Content-Type content="text/html; charset=utf-8">
+        <META http-equiv="Pragma" content="no-cache">
+        <META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+	<link rel="stylesheet" href="/css/main.css"/>
+	<script language=javascript type=text/javascript src=/js/Common.js ></script>
+    </HEAD>
+<BODY onresize="Resize(this);" onload="bd_load()">
+<iframe style="display:none" name=db onload="db_load()" ></iframe>
+        <CENTER>
+	    <iframe id=id_iframe_reboot name=name_iframe_reboot src="" style="display:none;" ></iframe>
+           <!-- <FORM method=GET action=/cgi-bin/response_Reboot.cgi target=_self > -->
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.reboot ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+      <DIV class=class_row>
+        <DIV class=class_col2><?cgi string=str.click_will_reboot ?>。
+	</DIV>
+      </DIV>
+
+      <DIV class=class_row id="seconds_div" style="display:none;">
+        <DIV class=class_col1></DIV>
+        <DIV class=class_col2 id="seconds" style="color:red; font-size:24px;">
+        </DIV>
+      </DIV>
+
+  </div><!-- div_main -->
+
+
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value="<?cgi string=str.reboot ?>" type=button onclick="on_submit();">&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+                <TABLE id=autoWidth>
+                        </TR>
+                        <TR>
+                            <TD class=blue >
+                            </TD>
+                        </TR>
+                    </TBODY>
+                </TABLE>
+         <!--   </FORM>  -->
+        </CENTER>
+        <META http-equiv="Pragma" content="no-cache">
+    </BODY>
+
+<script>
+var seconds=60;
+var jmpip="";
+
+function bd_load(){
+  window.frames["db"].document.location="/ini/sys_cfg.txt?time="+(new Date()).getTime();
+}
+
+function db_load(){
+  var str=window.frames["db"].document.body.innerHTML;
+  str = str.replace("<pre>", "");
+  str = str.replace("</pre>", "");
+  str = str.replace("<PRE>", "");
+  str = str.replace("</PRE>", "");
+
+  var db=ini2json(str);
+  jmpip=db.terminal.ip;
+}
+
+function on_shell(sh_file){
+        var url='/cgi-bin/response_x2i.cgi?obj_x2i=none.x2i&obj_sh='+sh_file;
+        var url_ret='&obj_ret='+urlEncode('/cache/Reboot.htm');
+        url+=url_ret;
+        url+="&time="+(new Date()).getTime();
+        document.getElementById("id_iframe_reboot").src=url;
+}
+
+function on_submit(){
+  on_shell('response_Reboot.sh');
+  $("seconds_div").style.display="";
+  setInterval("reload_index()", 1000);  
+  return false;
+}
+
+function reload_index(){
+  $("seconds").innerHTML='<div style="margin-left:75px; ">'+seconds+'</div>';
+  if(seconds--<=0){
+  	seconds = 0;
+    parent.location="http://"+jmpip;
+  }
+}
+</script>
+
+</HTML>

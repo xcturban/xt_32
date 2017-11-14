@@ -1,0 +1,48 @@
+﻿<HTML>
+    <HEAD>
+        <META http-equiv=Content-Language content=zh-cn>
+        <META http-equiv=Content-Type content="text/html; charset=utf-8">
+        <META http-equiv="Pragma" content="no-cache">
+        <META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+        <LINK rel=stylesheet href=CSS4Main.htm>
+	<link href="../css/main.css" rel="stylesheet"/>
+	<script language=javascript type=text/javascript src=../js/Common.js ></script>
+<script>
+function on_shell(sh_file){
+        var url='/cgi-bin/response_x2i.cgi?obj_htm=none.htm&obj_x2i=none.x2i&obj_c2h=none.c2h&obj_sh='+sh_file;
+        var url_ret='&obj_ret='+urlEncode('/Restore.htm');
+        url+=url_ret;
+        url+="&time="+(new Date()).getTime();
+        document.getElementById("id_iframe_restore").src=url;
+}
+</script>
+    </HEAD>
+    <BODY onresize="Resize(this);">
+        <CENTER>
+	    <iframe id=id_iframe_restore name=name_iframe_restore src="" style="display:none;" ></iframe>
+          <!--  <FORM method=GET action=/cgi-bin/response_Restore.cgi target=_self >  -->
+<DIV class=container >
+  <div class=title>
+    <div class=title_left ><img width="7" height="24" src="/images/arc.gif" complete="complete" /></div>
+    <div class=title_right ><?cgi string=str.format_device ?></div>
+  </div>
+  <div class=div_main_edge>
+  <DIV class=div_main>
+      <DIV class=class_row>
+        <DIV class=class_col2><?cgi string=str.click_will_format_device ?>。
+	</DIV>
+      </DIV>
+  </div><!-- div_main -->
+  <DIV class=class_row1>
+    <DIV class=class_r1c1>
+      <INPUT class=button value="<?cgi string=str.format_device ?>" type=submit name=b_save onclick="on_shell('response_Format.sh');">&nbsp; 
+    </DIV>
+  </DIV>
+  </div><!-- div_main_edge -->
+</DIV>
+           <!-- </FORM>  -->
+        </CENTER>
+        <META http-equiv="Pragma" content="no-cache">
+    </BODY>
+</HTML>
+

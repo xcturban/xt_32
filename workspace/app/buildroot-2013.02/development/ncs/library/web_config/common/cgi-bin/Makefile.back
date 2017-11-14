@@ -1,0 +1,29 @@
+
+all:
+	$(CC) -o StatusChange StatusChange.c Common.c xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o Status.cgi Status.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o response_NetCfg.cgi response_NetCfg.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o NetCfg.cgi NetCfg.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o response_AudioCfg.cgi response_AudioCfg.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o BoardCfg.cgi BoardCfg.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o response_BoardCfg.cgi response_BoardCfg.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o AudioCfg.cgi AudioCfg.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o response_VedioCfg.cgi response_VedioCfg.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o VedioCfg.cgi VedioCfg.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o HardUpdate.cgi HardUpdate.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o response_UploadFile.cgi response_UploadFile.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o HardUpdateState.cgi HardUpdateState.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o Restore.cgi Restore.c Common.c	 xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o response_Restore.cgi response_Restore.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o Reboot.cgi Reboot.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o response_Reboot.cgi response_Reboot.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o WebManage.cgi WebManage.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o response_WebManage.cgi response_WebManage.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o Main.cgi Main.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+	$(CC) -o response_Main.cgi response_Main.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+#this line for testing
+	$(CC) -o response_Test.cgi response_Test.c Common.c  xml.c ini.c xml2ini.c -L$(L) -liconv
+
+clean:
+	mv *.cgi rubish
+	mv StatusChange rubish
