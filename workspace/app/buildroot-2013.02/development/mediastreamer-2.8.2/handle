@@ -1,0 +1,216 @@
+src/android-display-bad.cpp:117:	ad->get_surface_id=jenv->GetMethodID(wc,"getSurface", "()Landroid/view/Surface;");
+src/android-display-bad.cpp:118:	if (ad->get_surface_id==NULL){
+src/android-display-bad.cpp:127:	ad->surface_id=jenv->GetFieldID(wc,"mSurface","I");
+src/android-display-bad.cpp:128:	if (ad->surface_id==NULL){
+src/android-display-bad.cpp:133:	MS_VIDEO_SIZE_ASSIGN(ad->vsize,CIF);
+src/android-display-bad.cpp:134:	MS_VIDEO_SIZE_ASSIGN(ad->wsize,CIF);
+src/android-display-bad.cpp:140:	if (ad->sws){
+src/android-display-bad.cpp:141:		ms_scaler_context_free (ad->sws);
+src/android-display-bad.cpp:142:		ad->sws=NULL;
+src/android-display-bad.cpp:157:	if (ad->surf!=NULL){
+src/android-display-bad.cpp:161:				if (sym_Android_Surface_lock(ad->surf,&info,true)==0){
+src/android-display-bad.cpp:170:					if (!ms_video_size_equal(vsize,ad->vsize)
+src/android-display-bad.cpp:171:						|| !ms_video_size_equal(wsize,ad->wsize) ){
+src/android-display-bad.cpp:172:						ad->vsize=vsize;
+src/android-display-bad.cpp:173:						ad->wsize=wsize;
+src/android-display-bad.cpp:174:						if (ad->sws){
+src/android-display-bad.cpp:175:							ms_scaler_context_free(ad->sws);
+src/android-display-bad.cpp:176:							ad->sws=NULL;
+src/android-display-bad.cpp:182:					if (ad->sws==NULL){
+src/android-display-bad.cpp:183:						ad->sws=ms_scaler_create_context(vsize.width,vsize.height,MS_YUV420P,
+src/android-display-bad.cpp:185:						if (ad->sws==NULL){
+src/android-display-bad.cpp:192:					ms_scaler_process(ad->sws,pic.planes,pic.strides,dest.planes,dest.strides);
+src/android-display-bad.cpp:193:					sym_Android_Surface_unlockAndPost(ad->surf);
+src/android-display-bad.cpp:215:		jsurface=jenv->CallObjectMethod(android_window,ad->get_surface_id);
+src/android-display-bad.cpp:218:	oldsurf=ad->surf;
+src/android-display-bad.cpp:219:	if (jsurface!=NULL) ad->surf=(Surface*)jenv->GetIntField(jsurface,ad->surface_id);
+src/android-display-bad.cpp:220:	else ad->surf=NULL;
+src/android-display-bad.cpp:221:	if (ad->surf)
+src/android-display-bad.cpp:222:		sym_Android_RefBase_incStrong(ad->surf,NULL);
+src/android-display-bad.cpp:227:	ms_message("Got new surface to draw (%p)",ad->surf);
+src/aqsnd.c:738:			ms_error("AudioQueueStart -read- %ld", aqresult);
+src/alsa.c:734:	mixer=alsa_mixer_open(ad->mixdev);
+src/alsa.c:757:	mixer=alsa_mixer_open(ad->mixdev);
+src/alsa.c:780:	mixer=alsa_mixer_open(ad->mixdev);
+src/alsa.c:798:	MSFilter *f=ms_alsa_read_new(ad->pcmdev);
+src/alsa.c:805:	MSFilter *f=ms_alsa_write_new(ad->pcmdev);
+src/alsa.c:817:	if (ad->pcmdev!=NULL) ms_free(ad->pcmdev);
+src/alsa.c:818:	if (ad->mixdev!=NULL) ms_free(ad->mixdev);
+src/alsa.c:864:	ad->pcmdev=ms_strdup(pcmdev);
+src/alsa.c:865:	ad->mixdev=ms_strdup(mixdev);
+src/alsa.c:901:		ad->pcmdev=ms_strdup("default");
+src/alsa.c:902:		ad->mixdev=ms_strdup("default");
+src/alsa.c:910:		ad->pcmdev=ms_strdup_printf("default:%i",id);
+src/alsa.c:911:		ad->mixdev=ms_strdup_printf("default:%i",id);
+src/alsa.c:914:			mixer = alsa_mixer_open(ad->mixdev);
+src/alsa.c:916:				ms_free(ad->mixdev);
+src/alsa.c:917:				ad->mixdev=ms_strdup_printf("hw:%i",id);
+src/alsa.c:924:	obj->capabilities=get_card_capabilities(ad->pcmdev);
+src/alsa.c:928:		ms_free(ad->pcmdev);
+src/alsa.c:929:		ad->pcmdev=ms_strdup_printf("plughw:%i",id);
+src/alsa.c:930:		obj->capabilities=get_card_capabilities(ad->pcmdev);
+src/alsa.c:962:	ad->pcmdev=NULL;
+src/alsa.c:963:	ad->handle=NULL;
+src/alsa.c:964:	ad->rate=forced_rate!=-1 ? forced_rate : 8000;
+src/alsa.c:965:	ad->nchannels=1;
+src/alsa.c:966:	ad->av_skew=0;
+src/alsa.c:970:	ad->read_started=FALSE;
+src/alsa.c:971:	ad->write_started=FALSE;
+src/alsa.c:972:	ad->bufferizer=ms_bufferizer_new();
+src/alsa.c:973:	ms_mutex_init(&ad->mutex,NULL);
+src/alsa.c:974:	ad->thread=0;
+src/alsa.c:982:	int samples=(160*ad->rate)/8000;
+src/alsa.c:987:	if (ad->handle==NULL && ad->pcmdev!=NULL){
+src/alsa.c:988:		ad->handle=alsa_open_r(ad->pcmdev,16,ad->nchannels==2,ad->rate);
+src/alsa.c:990:	if (ad->handle==NULL) return NULL;
+src/alsa.c:994:	while (ad->read_started)
+src/alsa.c:996:	    count = alsa_can_read(ad->handle);
+src/alsa.c:1012:	    if ((err=alsa_read(ad->handle,om->b_wptr,count))<=0)
+src/alsa.c:1024:	    ms_mutex_lock(&ad->mutex);
+src/alsa.c:1025:	    ms_bufferizer_put(ad->bufferizer,om);
+src/alsa.c:1026:	    ms_mutex_unlock(&ad->mutex);
+src/alsa.c:1045:	if (ad->handle!=NULL) snd_pcm_close(ad->handle);
+src/alsa.c:1046:	ad->handle=NULL;
+src/alsa.c:1112:	if (ad->handle!=NULL) snd_pcm_close(ad->handle);
+src/alsa.c:1113:	ad->handle=NULL;
+src/alsa.c:1121:	if (ad->pcmdev!=NULL) ms_free(ad->pcmdev);
+src/alsa.c:1122:	if (ad->handle!=NULL) snd_pcm_close(ad->handle);
+src/alsa.c:1124:	ms_bufferizer_destroy(ad->bufferizer);
+src/alsa.c:1125:	ms_mutex_destroy(&ad->mutex);
+src/alsa.c:1133:	int samples=(128*ad->rate)/8000;
+src/alsa.c:1137:	// if (ad->handle==NULL && ad->pcmdev!=NULL){
+src/alsa.c:1138:	if (ad->handle==NULL){
+src/alsa.c:1139:		ad->handle=alsa_open_r(/*ad->pcmdev*/"default:1",16,ad->nchannels==2,ad->rate);
+src/alsa.c:1140:		if (ad->handle){
+src/alsa.c:1141:			ad->read_samples=0;
+src/alsa.c:1146:		if (ad->handle == NULL) {
+src/alsa.c:1155:	if (ad->handle==NULL) return;
+src/alsa.c:1156:	while (alsa_can_read(ad->handle)>=samples){
+src/alsa.c:1158:		int size=samples*2*ad->nchannels;
+src/alsa.c:1160:		if ((err=alsa_read(ad->handle,om->b_wptr,samples))<=0) {
+src/alsa.c:1165:		ad->read_samples+=err;
+src/alsa.c:1166:		size=err*2*ad->nchannels;
+src/alsa.c:1178:	int samples=(160*ad->rate)/8000;
+src/alsa.c:1179:	int size=samples*2*ad->nchannels;
+src/alsa.c:1181:	ms_mutex_lock(&ad->mutex);
+src/alsa.c:1182:	while (ms_bufferizer_get_avail(ad->bufferizer)>=size){
+src/alsa.c:1185:	  ms_bufferizer_read(ad->bufferizer,om->b_wptr,size);
+src/alsa.c:1190:	ms_mutex_unlock(&ad->mutex);
+src/alsa.c:1196:	*((int*)param)=ad->rate;
+src/alsa.c:1203:	ad->rate=*((int*)param);
+src/alsa.c:1209:	ad->nchannels=*((int*)param);
+src/alsa.c:1238:	ad->pcmdev=ms_strdup(dev);
+src/alsa.c:1246:	ad->pcmdev=NULL;
+src/alsa.c:1247:	ad->handle=NULL;
+src/alsa.c:1248:	ad->rate=forced_rate!=-1 ? forced_rate : 8000;
+src/alsa.c:1249:	ad->nchannels=1;
+src/alsa.c:1253:	ad->read_started=FALSE;
+src/alsa.c:1254:	ad->write_started=FALSE;
+src/alsa.c:1255:	ad->bufferizer=ms_bufferizer_new();
+src/alsa.c:1256:	ms_mutex_init(&ad->mutex,NULL);
+src/alsa.c:1257:	ad->thread=0;
+src/alsa.c:1268:	int samples = (ALSA_PERIOD_SIZE * ad->rate) / 8000;
+src/alsa.c:1269:	int size = samples * 2 * ad->nchannels;
+src/alsa.c:1277:	if (ad->handle == NULL && ad->pcmdev != NULL)
+src/alsa.c:1278:		ad->handle = alsa_open_w(ad->pcmdev, 16, ad->nchannels == 2, ad->rate);
+src/alsa.c:1280:	if (ad->handle == NULL)
+src/alsa.c:1285:	while (ad->write_started) {
+src/alsa.c:1286:		ms_mutex_lock(&ad->mutex);
+src/alsa.c:1287:		while (ms_bufferizer_get_avail(ad->bufferizer) >= size){
+src/alsa.c:1288:			ms_bufferizer_read(ad->bufferizer, bytes, size);
+src/alsa.c:1289:			alsa_write(ad->handle, bytes, samples);
+src/alsa.c:1291:		ms_mutex_unlock(&ad->mutex);
+src/alsa.c:1294:		//alsa_write(ad->handle, bytes, samples);
+src/alsa.c:1300:	if (ad->handle != NULL)
+src/alsa.c:1301:		snd_pcm_close(ad->handle);
+src/alsa.c:1302:	ad->handle=NULL;
+src/alsa.c:1339:	if (ad->handle!=NULL) snd_pcm_close(ad->handle);
+src/alsa.c:1340:	ad->handle=NULL;
+src/alsa.c:1349:	if (ad->pcmdev!=NULL) ms_free(ad->pcmdev);
+src/alsa.c:1350:	if (ad->handle!=NULL) snd_pcm_close(ad->handle);
+src/alsa.c:1353:	ms_bufferizer_destroy(ad->bufferizer);
+src/alsa.c:1354:	ms_mutex_destroy(&ad->mutex);
+src/alsa.c:1362:	*((int*)data)=ad->rate;
+src/alsa.c:1370:	ad->rate=*rate;
+src/alsa.c:1377:	ad->nchannels=*n;
+src/alsa.c:1389:	// if (ad->handle==NULL && ad->pcmdev!=NULL){
+src/alsa.c:1390:	if (ad->handle==NULL){
+src/alsa.c:1391:		ad->handle=alsa_open_w(/*ad->pcmdev*/"default",16,ad->nchannels==2,ad->rate);
+src/alsa.c:1393:		alsa_fill_w (ad->pcmdev);
+src/alsa.c:1396:		if (ad->handle == NULL) {
+src/alsa.c:1407:	if (ad->handle==NULL) {
+src/alsa.c:1414:			samples=size/(2*ad->nchannels);
+src/alsa.c:1415:			err=alsa_write(ad->handle,im->b_rptr,samples);
+src/alsa.c:1417:				im->b_rptr+=err*(2*ad->nchannels);
+src/alsa.c:1432:	if (ad->handle == NULL) {
+src/alsa.c:1437:	ms_mutex_lock(&ad->mutex);
+src/alsa.c:1439:		ms_bufferizer_put(ad->bufferizer, im);
+src/alsa.c:1440:	ms_mutex_unlock(&ad->mutex);
+src/alsa.c:1472:	ad->pcmdev=ms_strdup(dev);
+src/tags:4219:f	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	MSFilter *f=ms_alsa_read_new(ad->pcmdev);$/;"	kind:local	line:798	language:C
+src/tags:4220:f	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	MSFilter *f=ms_alsa_write_new(ad->pcmdev);$/;"	kind:local	line:805	language:C
+src/tags:8254:samples	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	int samples = (ALSA_PERIOD_SIZE * ad->rate) \/ 8000;$/;"	kind:local	line:1268	language:C
+src/tags:8256:samples	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	int samples=(128*ad->rate)\/8000;$/;"	kind:local	line:1133	language:C
+src/tags:8257:samples	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	int samples=(160*ad->rate)\/8000;$/;"	kind:local	line:1178	language:C
+src/tags:8258:samples	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	int samples=(160*ad->rate)\/8000;$/;"	kind:local	line:982	language:C
+src/tags:8396:size	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^		int size=samples*2*ad->nchannels;$/;"	kind:local	line:1158	language:C
+src/tags:8398:size	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	int size = samples * 2 * ad->nchannels;$/;"	kind:local	line:1269	language:C
+src/tags:8400:size	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	int size=samples*2*ad->nchannels;$/;"	kind:local	line:1179	language:C
+src/tags:9831:wsize	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/android-display.c	/^				MSVideoSize wsize={ad->bmpinfo.width,ad->bmpinfo.height};$/;"	kind:local	line:106	language:C
+src/dxfilter.h:43:MIDL_INTERFACE("6B652FFF-11FE-4FCE-92AD-0266B5D7C78F")
+src/android-display.c:57:	ad->get_bitmap_id=(*jenv)->GetMethodID(jenv,wc,"getBitmap", "()Landroid/graphics/Bitmap;");
+src/android-display.c:58:	ad->update_id=(*jenv)->GetMethodID(jenv,wc,"update","()V");
+src/android-display.c:59:	ad->request_orientation_id=(*jenv)->GetMethodID(jenv,wc,"requestOrientation","(I)V");
+src/android-display.c:66:	if (ad->sws){
+src/android-display.c:67:		ms_scaler_context_free (ad->sws);
+src/android-display.c:68:		ad->sws=NULL;
+src/android-display.c:91:		(*jenv)->CallVoidMethod(jenv,ad->android_video_window,ad->request_orientation_id,vo);
+src/android-display.c:92:		ad->orientation_change_pending=TRUE;
+src/android-display.c:103:	if (ad->jbitmap!=0 && !ad->orientation_change_pending){
+src/android-display.c:106:				MSVideoSize wsize={ad->bmpinfo.width,ad->bmpinfo.height};
+src/android-display.c:113:				if (!ms_video_size_equal(vsize,ad->vsize)){
+src/android-display.c:115:					ad->vsize=vsize;
+src/android-display.c:116:					if (ad->sws){
+src/android-display.c:117:						ms_scaler_context_free(ad->sws);
+src/android-display.c:118:						ad->sws=NULL;
+src/android-display.c:125:				if (ad->sws==NULL){
+src/android-display.c:126:					ad->sws=ms_scaler_create_context (vsize.width,vsize.height,MS_YUV420P,
+src/android-display.c:128:					if (ad->sws==NULL){
+src/android-display.c:133:				if (sym_AndroidBitmap_lockPixels(jenv,ad->jbitmap,&pixels)==0){
+src/android-display.c:136:						dest.planes[0]=(uint8_t*)pixels+(vrect.y*ad->bmpinfo.stride)+(vrect.x*2);
+src/android-display.c:137:						dest.strides[0]=ad->bmpinfo.stride;
+src/android-display.c:138:						ms_scaler_process(ad->sws,pic.planes,pic.strides,dest.planes,dest.strides);
+src/android-display.c:141:					sym_AndroidBitmap_unlockPixels(jenv,ad->jbitmap);
+src/android-display.c:146:				(*jenv)->CallVoidMethod(jenv,ad->android_video_window,ad->update_id);
+src/android-display.c:166:		ad->jbitmap=(*jenv)->CallObjectMethod(jenv,window,ad->get_bitmap_id);
+src/android-display.c:168:		ad->jbitmap=NULL;
+src/android-display.c:169:	ad->android_video_window=window;
+src/android-display.c:170:	if (ad->jbitmap!=NULL){
+src/android-display.c:171:		err=sym_AndroidBitmap_getInfo(jenv,ad->jbitmap,&ad->bmpinfo);
+src/android-display.c:174:			ad->jbitmap=0;
+src/android-display.c:179:	if (ad->sws){
+src/android-display.c:180:		ms_scaler_context_free(ad->sws);
+src/android-display.c:181:		ad->sws=NULL;
+src/android-display.c:183:	ad->orientation_change_pending=FALSE;
+src/android-display.c:185:	if (ad->jbitmap!=NULL) ms_message("New java bitmap given with w=%i,h=%i,stride=%i,format=%i",
+src/android-display.c:186:	           ad->bmpinfo.width,ad->bmpinfo.height,ad->bmpinfo.stride,ad->bmpinfo.format);
+ltmain.sh:1308:# FAIL_CMD may read-access the current command in variable CMD!
+ltmain.sh:5658:      -mt|-mthreads|-kthread|-Kthread|-pthread|-pthreads|--thread-safe \
+ltmain.sh:5766:      -thread-safe)
+ltmain.sh:6163:	-mt|-mthreads|-kthread|-Kthread|-pthread|-pthreads|--thread-safe \
+tags:5445:f	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	MSFilter *f=ms_alsa_read_new(ad->pcmdev);$/;"	kind:local	line:798	language:C
+tags:5446:f	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	MSFilter *f=ms_alsa_write_new(ad->pcmdev);$/;"	kind:local	line:805	language:C
+tags:10207:samples	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	int samples = (ALSA_PERIOD_SIZE * ad->rate) \/ 8000;$/;"	kind:local	line:1268	language:C
+tags:10209:samples	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	int samples=(128*ad->rate)\/8000;$/;"	kind:local	line:1133	language:C
+tags:10210:samples	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	int samples=(160*ad->rate)\/8000;$/;"	kind:local	line:1178	language:C
+tags:10211:samples	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	int samples=(160*ad->rate)\/8000;$/;"	kind:local	line:982	language:C
+tags:10366:size	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^		int size=samples*2*ad->nchannels;$/;"	kind:local	line:1158	language:C
+tags:10368:size	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	int size = samples * 2 * ad->nchannels;$/;"	kind:local	line:1269	language:C
+tags:10370:size	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/alsa.c	/^	int size=samples*2*ad->nchannels;$/;"	kind:local	line:1179	language:C
+tags:11961:wsize	/home/hsq/hsqwk/NAS-8532V/workspace/app/buildroot-2013.02/development/mediastreamer-2.8.2/src/android-display.c	/^				MSVideoSize wsize={ad->bmpinfo.width,ad->bmpinfo.height};$/;"	kind:local	line:106	language:C
+configure:1568:  --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
+configure:1574:  --datarootdir=DIR       read-only arch.-independent data root [PREFIX/share]
+configure:1575:  --datadir=DIR           read-only architecture-independent data [DATAROOTDIR]
+configure:3174:{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for a thread-safe mkdir -p" >&5
+configure:3175:$as_echo_n "checking for a thread-safe mkdir -p... " >&6; }
+include/mediastreamer2/msconference.h:85: * @returns a read-only pointer to the conference parameters.
