@@ -488,10 +488,10 @@ static void ncs_terminal_info_get_parse(ncs_event_t *evt)
 		terminal_id = *((uint16_t *)(&evt_data->param2));
 
 		sprintf(server_ip, "%d.%d.%d.%d", p[0], p[1], p[2], p[3]);
-		//sprintf(gw, "%d.%d.%d.%d", p[4], p[5], p[6], p[7]);
-		//sprintf(terminal_ip, "%d.%d.%d.%d", p[8], p[9], p[10], p[11]);
-		sprintf(gw, "%d.%d.%d.%d", 192, 168, 1, 1);
-		sprintf(terminal_ip, "%d.%d.%d.%d", 192, 168, 1, 101);
+		sprintf(gw, "%d.%d.%d.%d", p[4], p[5], p[6], p[7]);
+		sprintf(terminal_ip, "%d.%d.%d.%d", p[8], p[9], p[10], p[11]);
+		/*sprintf(gw, "%d.%d.%d.%d", 192, 168, 1, 1);*/
+		/*sprintf(terminal_ip, "%d.%d.%d.%d", 192, 168, 1, 101);*/
 		
 		sprintf(mask, "%d.%d.%d.%d", p[12], p[13], p[14], p[15]);
 		server_port = *((uint16_t *)(&p[16]));
